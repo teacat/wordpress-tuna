@@ -1,89 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
-</head>
-<body class="homepage">
-    <!-- 導航欄 -->
-    <nav>
+<?php get_header(); ?>
 
-    </nav>
-    <!-- / 導航欄 -->
+<?php if ( is_search() ) { ?>
+<form class="global-search" method="get" action="<?php echo home_url('/'); ?>">
+    <input type="text" class="search__field" name="s" placeholder="在此輸入關鍵字…" value="<?php the_search_query(); ?>">
+    <input class="search__button" type="submit" value="搜尋">
+</form>
+<?php } ?>
 
-    <!-- 網站標頭 -->
-    <header class="header">
-        <div class="header__title">友一表實本為性媽麼飯建他</div>
-        <div class="header__subtitle">大且容的南一起的現什除育通原上黑此不兒簡品心給舉那；白北代。</div>
-    </header  >
-    <!-- / 網站標頭 -->
-
-    <!-- 主要區塊 -->
-    <section class="section">
-        <!-- 單篇文章 -->
-        <article class="section__article">
-            <!-- 標題 -->
-            <header class="article__header">媽麼飯建他我反界相上最時小一名</header>
-            <!-- / 標題 -->
-
-            <!-- 內容預覽 -->
-            <section class="article__content">
-                <img class="content__image" src="assets/images/16-9.png">
-                記獨一學在個結去認，落底便清本利後了必對看就不，白營我交增辦工子驚全機雨年會童他壓：本步我況了讀牛本失命還，全社女手分友一表實本為性媽麼飯建他我反界相上最時小一名地才自樣分自應交……了路我光能孩時年整要卻……能年導康兒見朋慢，起現每技！香教停禮易面一運國為？聯團裡地；始久上、著理哥、真家是……破們到開有有氣問裡面問拿生家連市是……我先座得資找吃分感了雄習；大且容的南一起的現什除育通原上黑此不兒簡品心給舉那；白北代。的書發團了得運運。空子成片所南書傷沒多我可告傷再者大木
-            </section>
-            <!-- / 內容預覽 -->
-
-            <!-- 中繼資料 -->
-            <aside class="article__meta">
-                <!-- 文章標籤 -->
-                <div class="meta__section meta__section--primary">
-                    <span class="section__label">書發團了</span>
-                    <span class="section__label">容的南一起的</span>
-                    <span class="section__label">教停</span>
-                </div>
-                <!-- / 文章標籤 -->
-
-                <!-- 發表日期 -->
-                <time class="meta__section">
-                    2018 年 07 月 24 日
-                </time>
-                <!-- / 發表日期 -->
-
-                <!-- 發表者頭像 -->
-                <a rel="author" class="meta__section">
-                    <img class="section__author" src="assets/images/user.png">
-                </a>
-                <!-- / 發表者頭像 -->
-            </aside>
-            <!-- / 中繼資料 -->
-        </article>
-        <!-- / 單篇文章 -->
-    </section>
-    <!-- / 主要區塊 -->
-
-    <!-- 頁腳清單 -->
-    <footer>
-        <!-- 左側 -->
-        <div>
-            <!-- 單個小工具 -->
-            <div>
-
-            </div>
-            <!-- / 單個小工具 -->
+<!-- .global-articles -->
+<div class="global-articles">
+    <?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
+    <div class="articles__article">
+        <?php if ( get_theme_mod('featured_picture_visibility') == 'enabled_background' && has_post_thumbnail() ) { ?>
+        <div class="article__featured">
+            <?php the_post_thumbnail();?>
         </div>
-        <!-- / 左側 -->
+        <?php } ?>
+        <div class="article__section">
+            <a href="<?php the_permalink();?>" class="article__title">
+                <?php the_title(); ?>
+            </a>
+            <?php if ( get_theme_mod('featured_picture_visibility') == 'enabled' && has_post_thumbnail() ) { ?>
+            <div class="article__featured">
+                <?php the_post_thumbnail('tunalog-fullsize');?>
+            </div>
+            <?php } ?>
+            <div class="article__content">
+                <?php if( !post_password_required() ) { ?>
+                    <?php echo wp_trim_words( get_the_content(), 180 ); ?>
+                <?php } ?>
+            </div>
+            <div class="article__meta">
+                <a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j'));  ?>" class="meta__date"><?php echo get_the_date(); ?></a>
+                <?php if ( get_theme_mod( 'display_author' ) == 'enabled' ) { ?>
+                <?php if ( get_the_author_meta( 'user_url' ) != "" ) { ?>
+                    ．<a href="<?php the_author_meta( 'user_url' ); ?>" class="meta__author"><?php the_author_meta( 'display_name' ); ?></a>
+                <?php } else { ?>
+                    ．<div class="meta__author"><?php the_author_meta( 'display_name' ); ?></div>
+                <?php } ?>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <?php } } ?>
+</div>
+<!-- / .global-articles -->
 
-        <!-- 中間 -->
-        <div></div>
-        <!-- / 中間 -->
+<?php
+    global $wp_query;
+    $total_pages = $wp_query->max_num_pages;
+    $paged       = (get_query_var('paged')) ? get_query_var('paged') : 1;
+?>
+<?php if ( $total_pages > 1 ) { ?>
+<!-- .global-pagination -->
+<div class="global-pagination">
+    <div class="pagination__previous">
+        <?php if ($paged != 1) { ?>
+        <?php echo previous_posts_link( '← 新文章' ); ?>
+        <?php } ?>
+    </div>
+    <div class="pagination__info">
+        目前第 <?php echo $paged ?> 頁，共有 <?php echo $total_pages ?> 頁
+    </div>
+    <div class="pagination__next">
+        <?php if ($paged != $total_pages) { ?>
+        <?php echo next_posts_link( '舊文章 →' ); ?>
+        <?php } ?>
+    </div>
+</div>
+<!-- / .global-pagination -->
+<?php } ?>
 
-        <!-- 右側 -->
-        <div></div>
-        <!-- / 右側 -->
-    </footer>
-    <!-- / 頁腳清單 -->
-</body>
-</html>
+<?php if ( is_search() && $total_pages == 0 ) { ?>
+<!-- .global-nothing -->
+<div class="global-nothing">
+    <div class="nothing__header">找不到文章</div>
+    <div class="nothing__description">請試著變換搜尋關鍵字</div>
+</div>
+<!-- / .global-nothing -->
+<?php } ?>
+
+<?php get_footer(); ?>

@@ -43,17 +43,6 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 	}
 }
 
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	line-height: 1.8em;
-}
-
 /* Inline code */
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
@@ -65,7 +54,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: slategray;
+	color: #989898;
 }
 
 .token.punctuation {

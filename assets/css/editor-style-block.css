@@ -7,7 +7,7 @@ Requires PHP: 5.2.4
 Description: 一個極簡設計的單欄式 WordPress 部落格佈景主題，並帶有 Prism 的程式碼標記功能。同時支援 WordPress 的區塊編輯器以達成最佳的使用者閱讀體驗！
 Tags: blog, one-column, editor-style, featured-images, footer-widgets, sidebar-widgets, full-width-template, theme-options, threaded-comments, block-styles, wide-blocks
 Author: TeaCat
-Author URI: https://github.com/teacat/tunalog
+Author URI: https://yami.io/
 Theme URI: https://github.com/teacat/tunalog
 License: DON'T BE A DICK PUBLIC LICENSE
 License URI: https://github.com/philsturgeon/dbad
@@ -47,31 +47,6 @@ Tunalog 裡的檔案皆以「別當個雞掰人」公眾授權條款釋出，這
     --contentWidth: 710px;
 
     --marginDistance: 2.8rem;
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-html {
-    font-size: 16px;
-    background: #FFF;
-}
-
-body {
-    padding: 0;
-    margin: 0;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-* {
-    box-sizing: border-box;
-    font-family: "Noto Sans TC";
 }
 
 /* -------------------------------------------------------------------------- */
@@ -129,355 +104,6 @@ body.is-standard-comment .singular-article .article__comments .comments_wrapper 
 
 body.is-standard-comment .singular-article .article__comments .comments__count {
     margin-bottom: var(--marginDistance);
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-body > .wrapper {
-    width: 100%;
-    transition: width .15s ease, transform .15s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transform: translateX(0);
-}
-
-body > .wrapper > .content {
-    flex: 1;
-    margin-bottom: calc(var(--marginDistance) * 3);
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-.widget .widget__title {
-    font-size: var(--h3FontSize);
-    font-weight: bold;
-}
-
-.widget:not(:last-child) {
-    margin-bottom: calc(var(--marginDistance) / 2);
-}
-
-.widget:not(:first-child) .widget__title {
-    margin-top: calc(var(--marginDistance) / 1.5);
-    margin-bottom: calc(var(--marginDistance) / 3);
-}
-
-.widget:first-child .widget__title {
-    margin-top: 0
-}
-
-.widget .widget__content li:not(:last-child) {
-    margin-bottom: .5rem;
-}
-
-.widget .widget__content ul:last-child {
-    margin-bottom: 0;
-}
-
-.widget .widget__content .children {
-    display: block;
-    margin-top: .5rem;
-}
-
-.widget .widget__content #wp-calendar,
-.widget .widget__content .wp-video .wp-video-shortcode {
-    width: 100%;
-}
-
-.widget .widget__content .wp-caption {
-    width: 100% !important;
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-.nothing,
-.global-nothing {
-    max-width: 710px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: calc(var(--marginDistance) * 2);
-    text-align: center;
-}
-
-.nothing .nothing__header {
-    font-size: var(--h1FontSize);
-    font-weight: bold;
-    color: var(--headerTextColor);
-}
-
-.global-nothing .nothing__header {
-    font-size: var(--h2FontSize);
-    color: var(--secondaryTextColor);
-}
-
-.nothing .nothing__description,
-.global-nothing .nothing__description {
-    color: var(--secondaryTextColor);
-}
-
-.nothing .nothing__button {
-    display: block;
-    margin-top: var(--marginDistance);
-    color: var(--secondaryTextColor);
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-.global-search {
-    max-width: 710px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: var(--marginDistance);
-    text-align: right;
-}
-
-.global-search .search__field {
-    width: 100%;
-    padding: .5rem 1rem;
-    margin-top: calc(var(--marginDistance) / 3);
-}
-
-.global-search .search__button {
-    background-color: #32373c;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: calc(var(--marginDistance) / 2);
-    text-align: center;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    color: #FFF;
-    font-weight: bold;
-}
-
-.compact-search {
-    display: flex;
-}
-
-.compact-search .search__field {
-    width: 100%;
-    padding: .5rem 1rem;
-}
-
-.compact-search .search__button {
-    background-color: #32373c;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    color: #FFF;
-    font-weight: bold;
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-.global-sidebar.sidebar--active {
-    visibility: visible;
-    transform: translateX(0);
-}
-
-.global-sidebar.sidebar--active + .wrapper {
-    width: calc(100% - 300px);
-}
-
-.global-sidebar {
-    position: fixed;
-    transform: translateX(300px);
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    overflow-y: scroll;
-    transition: transform .15s ease, visibility .15s ease;
-    background: var(--tertiaryBackgroundColor);
-    color: #FFF;
-    width: 300px;
-    padding: calc(var(--marginDistance) / 3) var(--marginDistance);
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
-}
-
-.global-sidebar .sidebar__header {
-    font-size: 1.5rem;
-    margin-bottom: var(--marginDistance);
-}
-
-body:not(.has-featured-image) .global-sidebar .sidebar__header {
-    margin-top: 2rem;
-}
-
-.global-sidebar .sidebar__header .sidebar__close {
-    border: 1px solid #505050;
-    padding: .4rem 1.5rem;
-    font-size: .9rem;
-    border-radius: 4px;
-    color: #bbb;
-    text-decoration: none;
-    float: right;
-}
-
-.global-sidebar .sidebar__header .sidebar__close:hover {
-    text-decoration: underline;
-}
-
-.global-sidebar .sidebar__widgets a {
-    color: #FFF;
-    text-decoration: none;
-
-    padding-bottom: 1px;
-    border-bottom: 1px solid currentcolor;
-}
-
-.global-sidebar .sidebar__widgets a:hover {
-    border-bottom-width: 2px;
-    box-sizing: border-box;
-}
-
-.global-sidebar .sidebar__widgets li > a {
-    border-bottom-width: 0;
-}
-
-.global-sidebar .sidebar__widgets li > a:hover {
-    border-bottom-width: 2px;
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-.global-header {
-    background: var(--secondaryBackgroundColor);
-    padding: calc(var(--marginDistance) * 1.5) 0;
-    text-align: center;
-}
-
-.global-header .header__title,
-.global-header .header__description {
-    max-width: 710px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.global-header .header__title {
-    font-size: 2.9rem;
-    color: var(--headerTextColor);
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    display: inline-block;
-}
-
-.global-header .header__title:hover {
-    border-bottom-color: currentColor;
-}
-
-.global-header .header__description {
-    color: var(--secondaryTextColor);
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-.footer {
-    background: var(--secondaryBackgroundColor);
-    padding: var(--marginDistance) 0;
-}
-
-.footer .footer__wrapper {
-    max-width: var(--asideWidth);
-    margin: 0 auto;
-    display: flex;
-}
-
-.footer .footer__widget {
-    flex: 1;
-    margin-right: calc(var(--marginDistance) / 2);
-}
-
-.footer .widget:not(:first-child) {
-    margin-top: 2rem;
-}
-
-.footer .widget__title {
-    color: var(--headerTextColor);
-}
-
-.footer .widget__content {
-    color: var(--textColor);
-}
-
-.footer .widget__content a {
-    color: var(--textColor);
-    padding-bottom: 1px;
-    border-bottom: 1px solid currentcolor;
-    text-decoration: none;
-}
-
-.footer .widget__content a:hover {
-    border-bottom-width: 2px;
-}
-
-.footer .widget__content li > a {
-    border-bottom-width: 0;
-}
-
-.footer .widget__content li > a:hover {
-    border-bottom-width: 2px;
-}
-
-/* -------------------------------------------------------------------------- */
-
-/*
-/* -------------------------------------------------------------------------- */
-
-.copyright {
-    border-top: 1px solid var(--borderColor);
-    padding: calc(var(--marginDistance) / 3) 0;
-    color: var(--secondaryTextColor);
-    font-size: .9rem;
-}
-
-.footer + .copyright {
-    background: var(--secondaryBackgroundColor);
-}
-
-.copyright .copyright__wrapper {
-    max-width: var(--asideWidth);
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-}
-
-.copyright .copyright__wrapper .copyright__left + .copyright__right {
-    margin-left: auto;
-    text-align: right;
-}
-
-.copyright .copyright__wrapper .copyright__right a {
-    color: var(--secondaryTextColor);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1365,28 +991,28 @@ body.has-featured-image .singular-header .header__wrapper {
  * Pull Quote
  */
 
-.singular-article .article__content .wp-block-pullquote {
+.wp-block-pullquote {
     padding: 0;
 }
 
-.singular-article .article__content .wp-block-pullquote blockquote {
+.wp-block-pullquote blockquote {
     margin: 0;
 }
 
-.singular-article .article__content .wp-block-pullquote blockquote p {
+.wp-block-pullquote blockquote p {
     font-size: var(--h3FontSize);
     line-height: 1.4;
     font-weight: bold;
     color: var(--headerTextColor);
 }
 
-.singular-article .article__content .wp-block-pullquote blockquote cite {
+.wp-block-pullquote blockquote cite {
     color: var(--secondaryTextColor);
     font-style: normal;
     line-height: 2.1;
 }
 
-.singular-article .article__content .wp-block-pullquote::before {
+.wp-block-pullquote::before {
     background: #f9f9f9;
     color: var(--headerTextColor);
     border-radius: 50%;

@@ -1,89 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
-</head>
-<body class="homepage">
-    <!-- 導航欄 -->
-    <nav>
+<?php get_header(); ?>
 
-    </nav>
-    <!-- / 導航欄 -->
 
-    <!-- 網站標頭 -->
-    <header class="header">
-        <div class="header__title">友一表實本為性媽麼飯建他</div>
-        <div class="header__subtitle">大且容的南一起的現什除育通原上黑此不兒簡品心給舉那；白北代。</div>
-    </header  >
-    <!-- / 網站標頭 -->
 
-    <!-- 主要區塊 -->
-    <section class="section">
-        <!-- 單篇文章 -->
-        <article class="section__article">
-            <!-- 標題 -->
-            <header class="article__header">媽麼飯建他我反界相上最時小一名</header>
-            <!-- / 標題 -->
+<script>
+document.querySelector(".wrapper").addEventListener("click", (e) => {
+    document.querySelector(".global-sidebar").classList.remove("sidebar--active")
+    document.querySelector("a.header__button").classList.remove("header__button--active")
+})
 
-            <!-- 內容預覽 -->
-            <section class="article__content">
-                <img class="content__image" src="assets/images/16-9.png">
-                記獨一學在個結去認，落底便清本利後了必對看就不，白營我交增辦工子驚全機雨年會童他壓：本步我況了讀牛本失命還，全社女手分友一表實本為性媽麼飯建他我反界相上最時小一名地才自樣分自應交……了路我光能孩時年整要卻……能年導康兒見朋慢，起現每技！香教停禮易面一運國為？聯團裡地；始久上、著理哥、真家是……破們到開有有氣問裡面問拿生家連市是……我先座得資找吃分感了雄習；大且容的南一起的現什除育通原上黑此不兒簡品心給舉那；白北代。的書發團了得運運。空子成片所南書傷沒多我可告傷再者大木
-            </section>
-            <!-- / 內容預覽 -->
+document.querySelector("a.header__button").addEventListener("click", (e) => {
+    document.querySelector(".global-sidebar").classList.toggle("sidebar--active")
+    document.querySelector("a.header__button").classList.toggle("header__button--active")
+    e.stopPropagation();
+})
 
-            <!-- 中繼資料 -->
-            <aside class="article__meta">
-                <!-- 文章標籤 -->
-                <div class="meta__section meta__section--primary">
-                    <span class="section__label">書發團了</span>
-                    <span class="section__label">容的南一起的</span>
-                    <span class="section__label">教停</span>
-                </div>
-                <!-- / 文章標籤 -->
+document.querySelector(".sidebar__close").addEventListener("click", () => {
+    document.querySelector(".global-sidebar").classList.toggle("sidebar--active")
+    document.querySelector("a.header__button").classList.toggle("header__button--active")
+})
+</script>
 
-                <!-- 發表日期 -->
-                <time class="meta__section">
-                    2018 年 07 月 24 日
-                </time>
-                <!-- / 發表日期 -->
+<?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
+<!-- .article -->
+<article class="singular-article">
 
-                <!-- 發表者頭像 -->
-                <a rel="author" class="meta__section">
-                    <img class="section__author" src="assets/images/user.png">
-                </a>
-                <!-- / 發表者頭像 -->
-            </aside>
-            <!-- / 中繼資料 -->
-        </article>
-        <!-- / 單篇文章 -->
+    <?php if ( has_post_thumbnail() && ! post_password_required() ) {?>
+    <!-- .article__featured -->
+    <figure class="article__featured">
+        <?php the_post_thumbnail();?>
+    </figure>
+    <!-- / .article__featured -->
+    <?php } ?>
+
+    <!-- .article__meta -->
+    <aside class="article__meta">
+        <time class="meta__time"><a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j'));  ?>"><?php echo get_the_date(); ?></a></time>
+    </aside>
+    <!-- / .article__meta -->
+
+    <!-- .article__title -->
+    <header class="article__title"><?php the_title(); ?></header>
+    <!-- / .article__title -->
+
+    <!-- .article__vcard -->
+    <?php singular_vcard('start'); ?>
+    <!-- / .article__vcard -->
+
+    <!-- .article__content -->
+    <section class="article__content">
+        <?php the_content(); ?>
     </section>
-    <!-- / 主要區塊 -->
+    <!-- / .article__content -->
 
-    <!-- 頁腳清單 -->
-    <footer>
-        <!-- 左側 -->
-        <div>
-            <!-- 單個小工具 -->
-            <div>
-
-            </div>
-            <!-- / 單個小工具 -->
+    <!-- .article__footer -->
+    <?php if( has_category() || has_tag() ) { ?>
+    <footer class="article__footer">
+        <?php if( has_category() ) { ?>
+        <div class="footer__categories">
+            <?php the_category( ' ' ); ?>
         </div>
-        <!-- / 左側 -->
-
-        <!-- 中間 -->
-        <div></div>
-        <!-- / 中間 -->
-
-        <!-- 右側 -->
-        <div></div>
-        <!-- / 右側 -->
+        <?php } if ( has_tag() ) { ?>
+        <div class="footer__tags">
+            <?php the_tags( '', '' ); ?>
+        </div>
+        <?php } ?>
     </footer>
-    <!-- / 頁腳清單 -->
-</body>
-</html>
+    <?php } ?>
+    <!-- / .article__footer -->
+
+    <!-- .article__vcard -->
+    <?php singular_vcard('end'); ?>
+    <!-- / .article__vcard -->
+
+    <!-- .article__comments -->
+    <?php comments_template(); ?>
+    <!-- / .article__comments -->
+
+    <!-- .article__pagenav -->
+    <nav class="article__pagenav">
+        <?php
+            $previous = get_previous_post();
+            $next = get_next_post();
+        ?>
+        <?php if ( get_previous_post() ) { ?>
+        <a href="<?php echo get_permalink( $previous->ID ); ?>" class="pagenav__previous">
+            <div class="pagenav__label">上一篇</div>
+            <div class="pagenav__title"><?php echo get_the_title($previous) ?></div>
+        </a>
+        <?php } if ( get_next_post() ) { ?>
+        <a href="<?php echo get_permalink( $next->ID ); ?>" class="pagenav__next">
+            <div class="pagenav__label">下一篇</div>
+            <div class="pagenav__title"><?php echo get_the_title($next) ?></div>
+        </a>
+        <?php } ?>
+    </nav>
+    <!-- / .article__pagenav -->
+</article>
+<!-- / .article -->
+<?php } } ?>
+
+<?php get_footer();
