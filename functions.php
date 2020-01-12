@@ -24,22 +24,6 @@ function tunalog_register_scripts() {
 add_action( 'wp_enqueue_scripts', 'tunalog_register_scripts' );
 
 /**
- * 區塊編輯器
- */
-
-function tunalog_block_editor_styles() {
-	$css_dependencies = array();
-	//wp_enqueue_style( 'tunalog-block-editor-style', get_theme_file_uri( '/assets/css/editor-style-block.css' ) . '?v=' . time(), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
-
-}
-add_action( 'enqueue_block_editor_assets', 'tunalog_block_editor_styles', 1, 1 );
-
-
-
-add_editor_style( 'assets/css/editor-style-block.css' );
-
-
-/**
  * 小工具
  */
 
