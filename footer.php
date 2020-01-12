@@ -29,19 +29,19 @@
 <!-- / .footer -->
 <?php } ?>
 
-<?php if ( get_theme_mod( 'display_by' )  != 'disabled' || get_theme_mod( 'display_copyright' ) == 'enabled' ) { ?>
+<?php if ( get_theme_mod( 'display_by', 'enabled_all' )  != 'disabled' || get_theme_mod( 'display_copyright', 'enabled' ) == 'enabled' ) { ?>
 <!-- .copyright -->
 <div class="copyright">
     <div class="copyright__wrapper">
-        <?php if ( get_theme_mod( 'display_copyright' ) == 'enabled' ) { ?>
+        <?php if ( get_theme_mod( 'display_copyright', 'enabled' ) == 'enabled' ) { ?>
         <div class="copyright__left">
             <?php echo get_bloginfo( 'name' ); ?> © <?php echo date('Y'); ?>
         </div>
         <?php } ?>
 
-        <?php if ( get_theme_mod(  'display_by'  ) != 'disabled' ) { ?>
+        <?php if ( get_theme_mod( 'display_by', 'enabled_all' ) != 'disabled' ) { ?>
         <div class="copyright__right">
-            <?php if ( get_theme_mod(  'display_by'  ) == 'enabled_all' ) { ?>
+            <?php if ( get_theme_mod( 'display_by', 'enabled_all' ) == 'enabled_all' ) { ?>
             以套用 <a href="//github.com/teacat/tunalog">Tunalog</a> 佈景主題的 <a href="//tw.wordpress.org/">WordPress</a> 發表
             <?php } else { ?>
             驕傲地採用 <a href="//tw.wordpress.org/">WordPress</a> 發表

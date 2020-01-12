@@ -4,7 +4,7 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php if ( get_theme_mod('social_friendly') == 'enabled' ) {
+    <?php if ( get_theme_mod( 'social_friendly', 'enabled' ) == 'enabled' ) {
         global $post;
         global $wp;
 
@@ -32,27 +32,27 @@
     <?php wp_head(); ?>
 </head>
 <?php
-    $classes = array('');
-    if ( get_theme_mod('header_width') == 'wide' ) {
-        array_push($classes, 'is-wide-aside');
+    $classes = array( '' );
+    if ( get_theme_mod( 'header_width', 'standard' ) == 'wide' ) {
+        array_push( $classes, 'is-wide-aside' );
     }
-    if ( get_theme_mod('featured_picture_visibility') == 'enabled' ) {
-        array_push($classes, 'is-featured-shown');
+    if ( get_theme_mod( 'featured_picture_visibility', 'disabled' ) == 'enabled' ) {
+        array_push( $classes, 'is-featured-shown' );
     }
-    if ( get_theme_mod('featured_picture_visibility') == 'enabled_background' ) {
-        array_push($classes, 'is-featured-shown-background');
+    if ( get_theme_mod( 'featured_picture_visibility', 'disabled' ) == 'enabled_background' ) {
+        array_push( $classes, 'is-featured-shown-background' );
     }
-    if ( get_theme_mod('text_justify') == 'enabled' ) {
-        array_push($classes, 'is-text-justify');
+    if ( get_theme_mod( 'text_justify', 'disabled' ) == 'enabled' ) {
+        array_push( $classes, 'is-text-justify' );
     }
-    if ( get_theme_mod('text_justify') == 'enabled_mobile' ) {
-        array_push($classes, 'is-text-justify-mobile');
+    if ( get_theme_mod( 'text_justify', 'disabled' ) == 'enabled_mobile' ) {
+        array_push( $classes, 'is-text-justify-mobile' );
     }
-    if ( get_theme_mod('codeblock_width') == 'full' ) {
-        array_push($classes, 'is-codeblock-full');
+    if ( get_theme_mod( 'codeblock_width', 'standard' ) == 'full' ) {
+        array_push( $classes, 'is-codeblock-full' );
     }
-    if ( get_theme_mod('comment_style') == 'standard' ) {
-        array_push($classes, 'is-standard-comment');
+    if ( get_theme_mod( 'comment_style', 'standard' ) == 'standard' ) {
+        array_push( $classes, 'is-standard-comment' );
     }
 ?>
 <body <?php body_class($classes); ?>>
@@ -71,7 +71,9 @@
 <div class="singular-header">
     <div class="header__wrapper">
         <a href="<?php echo get_bloginfo('url'); ?>" class="header__title"><?php echo get_bloginfo('name'); ?></a>
+        <?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
         <a class="header__button" href="#!">選單</a>
+        <?php } ?>
     </div>
 </div>
 <!-- / .singular-header -->

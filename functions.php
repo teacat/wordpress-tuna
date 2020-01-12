@@ -16,7 +16,7 @@ add_action( 'wp_enqueue_scripts', 'tunalog_register_styles' );
 
 function tunalog_register_scripts() {
 	$theme_version = wp_get_theme()->get( 'Version' );
-	if ( get_theme_mod( 'highlight_js' ) == 'enabled' ) {
+	if ( get_theme_mod( 'highlight_js', 'enabled' ) == 'enabled' ) {
 		wp_enqueue_script( 'tunalog-prism-js', get_template_directory_uri() . '/assets/js/prism.js', array(), $theme_version, false );
 		wp_script_add_data( 'tunalog-prism-js', 'async', true );
 	}

@@ -2,13 +2,13 @@
     if ( post_password_required() ) {
         return;
     }
-    if (get_theme_mod('display_vcard') == 'disabled') {
+    if (get_theme_mod( 'display_vcard', 'end' ) == 'disabled') {
         return;
     }
-    if ($position == 'start' && get_theme_mod('display_vcard') != 'start') {
+    if ($position == 'start' && get_theme_mod( 'display_vcard', 'end' ) != 'start') {
         return;
     }
-    if ($position == 'end' && get_theme_mod('display_vcard') != 'end') {
+    if ($position == 'end' && get_theme_mod( 'display_vcard', 'end' ) != 'end') {
         return;
     }
 ?>

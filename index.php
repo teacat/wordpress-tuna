@@ -11,7 +11,7 @@
 <div class="global-articles">
     <?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
     <div class="articles__article">
-        <?php if ( get_theme_mod('featured_picture_visibility') == 'enabled_background' && has_post_thumbnail() ) { ?>
+        <?php if ( get_theme_mod( 'featured_picture_visibility', 'disabled' ) == 'enabled_background' && has_post_thumbnail() ) { ?>
         <div class="article__featured">
             <?php the_post_thumbnail();?>
         </div>
@@ -20,7 +20,7 @@
             <a href="<?php the_permalink();?>" class="article__title">
                 <?php the_title(); ?>
             </a>
-            <?php if ( get_theme_mod('featured_picture_visibility') == 'enabled' && has_post_thumbnail() ) { ?>
+            <?php if ( get_theme_mod( 'featured_picture_visibility', 'disabled' ) == 'enabled' && has_post_thumbnail() ) { ?>
             <div class="article__featured">
                 <?php the_post_thumbnail('tunalog-fullsize');?>
             </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="article__meta">
                 <a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j'));  ?>" class="meta__date"><?php echo get_the_date(); ?></a>
-                <?php if ( get_theme_mod( 'display_author' ) == 'enabled' ) { ?>
+                <?php if ( get_theme_mod( 'display_author', 'enabled' ) == 'enabled' ) { ?>
                 <?php if ( get_the_author_meta( 'user_url' ) != "" ) { ?>
                     ．<a href="<?php the_author_meta( 'user_url' ); ?>" class="meta__author"><?php the_author_meta( 'display_name' ); ?></a>
                 <?php } else { ?>
