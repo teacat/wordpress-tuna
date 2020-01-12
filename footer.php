@@ -35,7 +35,7 @@
     <div class="copyright__wrapper">
         <?php if ( get_theme_mod( 'display_copyright' ) == 'enabled' ) { ?>
         <div class="copyright__left">
-            電腦玩瞎咪 © <?php echo date('Y'); ?>
+            <?php echo get_bloginfo( 'name' ); ?> © <?php echo date('Y'); ?>
         </div>
         <?php } ?>
 
