@@ -17,7 +17,7 @@
     <div class="vcard__avatar">
         <img src="<?php echo get_avatar_url(get_the_author_meta('user_email')); ?>">
         <div class="vcard__name">
-            <?php if( get_the_author_meta( 'user_url' ) != "" ) { ?>
+            <?php if( get_the_author_meta( 'user_url' ) != '' ) { ?>
                 <a href="<?php the_author_meta( 'user_url' ); ?>"><?php the_author_meta( 'display_name' ); ?></a>
             <?php } else { ?>
                 <?php the_author_meta( 'display_name' ); ?>
@@ -26,15 +26,17 @@
     </div>
     <div class="vcard__section">
         <div class="vcard__name">
-            <?php if( get_the_author_meta( 'user_url' ) != "" ) { ?>
+            <?php if( get_the_author_meta( 'user_url' ) != '' ) { ?>
                 <a href="<?php the_author_meta( 'user_url' ); ?>"><?php the_author_meta( 'display_name' ); ?></a>
             <?php } else { ?>
                 <?php the_author_meta( 'display_name' ); ?>
             <?php } ?>
         </div>
+        <?php if ( get_the_author_meta('description') != '' ) { ?>
         <div class="vcard__bio">
             <?php the_author_meta('description'); ?>
         </div>
+        <?php } ?>
     </div>
 </div>
 <!-- / .article__vcard -->
