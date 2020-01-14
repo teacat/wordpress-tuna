@@ -1581,11 +1581,19 @@ body.has-featured-image .singular-header .header__wrapper {
 
 .singular-article .article__content pre.wp-block-code {
     background: #f9f9f9;
+    color: var(--textColor);
     font-size: .95rem;
     padding: calc(var(--marginDistance) / 2);
 	overflow: auto;
     box-sizing: border-box;
     line-height: 1.7;
+    text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	tab-size: 4;
+	hyphens: none;
 }
 
 .singular-article .article__content pre.wp-block-code code,

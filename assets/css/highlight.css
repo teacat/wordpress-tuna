@@ -1,0 +1,42 @@
+.hljs-title,
+.hljs-meta,
+.hljs-name,
+.hljs-section {
+	color: #C18401;
+}
+
+.hljs-code {
+	color: #50A14F;
+}
+
+.hljs-attr,
+.hljs-attribute {
+	color: #986801;
+}
+
+.hljs-comment {
+	color: #A0A1A7;
+}
+
+.hljs-keyword {
+	color: #A626A4;
+}
+
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+	color: #50A14F;
+}
+
+.hljs-params {
+	color: #50A14F;
+}
+
+.language-shell .hljs-meta {
+	user-select: none;
+}
