@@ -8,7 +8,6 @@ Description: 一個極簡設計的單欄式 WordPress 部落格佈景主題，�
 Tags: blog, one-column, editor-style, featured-images, footer-widgets, sidebar-widgets, full-width-template, theme-options, threaded-comments, block-styles, wide-blocks
 Author: TeaCat
 Author URI: https://github.com/teacat/tunalog
-Theme URI: https://github.com/teacat/tunalog
 License: DON'T BE A DICK PUBLIC LICENSE
 License URI: https://github.com/philsturgeon/dbad
 
@@ -62,6 +61,11 @@ html {
 body {
     padding: 0;
     margin: 0;
+}
+
+body.is-preload *{
+    animation-duration: 0s !important;
+    transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
 }
 
 html,
@@ -1407,7 +1411,7 @@ body.has-featured-image .singular-header .header__wrapper {
 
 .singular-article .article__content pre.wp-block-verse {
     border: 1px solid var(--borderColor);
-    padding: 2rem;
+    padding: calc(var(--marginDistance) / 2);
 }
 
 /**
@@ -1504,6 +1508,7 @@ body.has-featured-image .singular-header .header__wrapper {
 }
 
 .singular-article .article__content {
+    word-break: break-all;
     color: var(--textColor);
 }
 
@@ -1562,7 +1567,7 @@ body.has-featured-image .singular-header .header__wrapper {
 
 .singular-article .article__content ol,
 .singular-article .article__content ul {
-    padding-left: calc(var(--marginDistance) / 1.1);
+    padding-left: calc(var(--marginDistance) / 2);
 }
 
 .singular-article .article__content li {
@@ -1577,7 +1582,7 @@ body.has-featured-image .singular-header .header__wrapper {
 .singular-article .article__content pre.wp-block-code {
     background: #f9f9f9;
     font-size: .95rem;
-    padding: var(--marginDistance);
+    padding: calc(var(--marginDistance) / 2);
 	overflow: auto;
     box-sizing: border-box;
     line-height: 1.7;
@@ -1587,7 +1592,7 @@ body.has-featured-image .singular-header .header__wrapper {
 .singular-article .article__content pre.wp-block-code pre,
 .singular-article .article__content pre.wp-block-code code *,
 .singular-article .article__content pre.wp-block-code pre * {
-    font-family: "Ubuntu Mono", "Noto Sans TC";
+    font-family: "Fira Code", "Noto Sans TC";
 }
 
 .singular-article .article__content pre.wp-block-code span.comment.token {
@@ -1600,11 +1605,17 @@ body.has-featured-image .singular-header .header__wrapper {
  * Inline Code
  */
 
-.singular-article .article__content > p code {
+.singular-article .article__content > p code,
+.singular-article .article__content > h1 code,
+.singular-article .article__content > h2 code,
+.singular-article .article__content > h3 code,
+.singular-article .article__content > h4 code,
+.singular-article .article__content > h5 code,
+.singular-article .article__content > h6 code {
     background: var(--labelBackgroundColor);
     padding: .2rem .5rem;
     margin: 0 .3rem;
-    font-family: "Ubuntu Mono", "Noto Sans TC";
+    font-family: "Fira Code", "Noto Sans TC";
 }
 
 /**
@@ -1798,7 +1809,7 @@ body.has-featured-image .singular-header .header__wrapper {
     }
 
     .singular-article .article__content pre.wp-block-code {
-        padding: calc(var(--marginDistance) / 2);
+        padding: calc(var(--marginDistance) / 3);
     }
 
     .singular-article .article__content hr.wp-block-separator {
@@ -1815,7 +1826,7 @@ body.has-featured-image .singular-header .header__wrapper {
     }
 
     .singular-article .article__content pre.wp-block-verse {
-        padding: calc(var(--marginDistance) / 2);
+        padding: calc(var(--marginDistance) / 3);
     }
 
     .singular-article .article__content .wp-block-media-text {
