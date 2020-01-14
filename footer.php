@@ -56,6 +56,9 @@
 </div>
 <!-- / .wrapper -->
 
+<script>
+window.addEventListener('load', () => document.body.classList.remove('is-preload'));
+</script>
 <?php wp_footer(); ?>
 </body>
 </html>
