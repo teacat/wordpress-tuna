@@ -27,10 +27,10 @@
     <meta property="og:image" content="<?php echo $image; ?>">
     <meta name="twitter:image" content="<?php echo $image; ?>">
     <?php } ?>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <?php tunalog_dynamic_highlight_loader(); ?>
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
-</head>
 <?php
     $classes = array( '' );
     if ( get_theme_mod( 'header_width', 'standard' ) == 'wide' ) {
@@ -54,6 +54,7 @@
     if ( get_theme_mod( 'comment_style', 'standard' ) == 'standard' ) {
         array_push( $classes, 'is-standard-comment' );
     }
+    array_push( $classes, 'is-preload' );
 ?>
 <body <?php body_class($classes); ?>>
 <?php get_sidebar(); ?>

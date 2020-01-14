@@ -6,22 +6,9 @@
 function tunalog_register_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
 	wp_enqueue_style( 'tunalog-style', get_stylesheet_uri() . '?v=' . time(), array(), $theme_version );
-	wp_enqueue_style( 'tunalog-prism-style', get_template_directory_uri() . '/assets/css/prism.css', array(), $theme_version);
+	wp_enqueue_style( 'tunalog-prism-style', get_template_directory_uri() . '/assets/css/prism.css' . '?v=' . time(), array(), $theme_version);
 }
 add_action( 'wp_enqueue_scripts', 'tunalog_register_styles' );
-
-/**
- * 腳本
- */
-
-function tunalog_register_scripts() {
-	$theme_version = wp_get_theme()->get( 'Version' );
-	if ( get_theme_mod( 'highlight_js', 'enabled' ) == 'enabled' ) {
-		wp_enqueue_script( 'tunalog-prism-js', get_template_directory_uri() . '/assets/js/prism.js', array(), $theme_version, false );
-		wp_script_add_data( 'tunalog-prism-js', 'async', true );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'tunalog_register_scripts' );
 
 /**
  * 小工具
@@ -316,7 +303,7 @@ class Tunalog_Customize {
 				'section'  => 'content_options',
 				'priority' => 10,
 				'label'    => '程式碼標註',
-				'description' => '是否要透過 Prism 螢光標記程式碼區塊？',
+				'description' => '是否要透過 Highlight.js 螢光標記程式碼區塊？',
 				'choices'  => array(
 					'enabled'    => '啟用',
 					'disabled' => '停用',
@@ -488,3 +475,26 @@ add_action( 'customize_register', array( 'Tunalog_Customize', 'register' ) );
  */
 
 require('singular-vcard.php');
+
+function tunalog_dynamic_highlight_loader() {
+	if( !is_singular() ) {
+		return;
+	}
+	if ( get_theme_mod( 'highlight_js', 'enabled' ) != 'enabled' ) {
+		return;
+	}
+
+	echo '<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>';
+
+	// $languages = array( '1c', 'abnf', 'accesslog', 'actionscript', 'ada', 'angelscript', 'apache', 'applescript', 'arcade', 'arduino', 'armasm', 'asciidoc', 'aspectj', 'autohotkey', 'autoit', 'avrasm', 'awk', 'axapta', 'bash', 'basic', 'bnf', 'brainfuck', 'cal', 'capnproto', 'ceylon', 'clean', 'clojure-repl', 'clojure', 'cmake', 'coffeescript', 'coq', 'cos', 'cpp', 'crmsh', 'crystal', 'cs', 'csp', 'css', 'd', 'dart', 'delphi', 'diff', 'django', 'dns', 'dockerfile', 'dos', 'dsconfig', 'dts', 'dust', 'ebnf', 'elixir', 'elm', 'erb', 'erlang-repl', 'erlang', 'excel', 'fix', 'flix', 'fortran', 'fsharp', 'gams', 'gauss', 'gcode', 'gherkin', 'glsl', 'gml', 'go', 'golo', 'gradle', 'groovy', 'haml', 'handlebars', 'haskell', 'haxe', 'hsp', 'htmlbars', 'http', 'hy', 'inform7', 'ini', 'irpf90', 'isbl', 'java', 'javascript', 'jboss-cli', 'json', 'julia-repl', 'julia', 'kotlin', 'lasso', 'ldif', 'leaf', 'less', 'lisp', 'livecodeserver', 'livescript', 'llvm', 'lsl', 'lua', 'makefile', 'markdown', 'mathematica', 'matlab', 'maxima', 'mel', 'mercury', 'mipsasm', 'mizar', 'mojolicious', 'monkey', 'moonscript', 'n1ql', 'nginx', 'nimrod', 'nix', 'nsis', 'objectivec', 'ocaml', 'openscad', 'oxygene', 'parser3', 'perl', 'pf', 'pgsql', 'php', 'plaintext', 'pony', 'powershell', 'processing', 'profile', 'prolog', 'properties', 'protobuf', 'puppet', 'purebasic', 'python', 'q', 'qml', 'r', 'reasonml', 'rib', 'roboconf', 'routeros', 'rsl', 'ruby', 'ruleslanguage', 'rust', 'sas', 'scala', 'scheme', 'scilab', 'scss', 'shell', 'smali', 'smalltalk', 'sml', 'sqf', 'sql', 'stan', 'stata', 'step21', 'stylus', 'subunit', 'swift', 'taggerscript', 'tap', 'tcl', 'tex', 'thrift', 'tp', 'twig', 'typescript', 'vala', 'vbnet', 'vbscript-html', 'vbscript', 'verilog', 'vhdl', 'vim', 'x86asm', 'xl', 'xml', 'xquery', 'yaml', 'zephir' );
+
+	$languages = array( '1c', 'abnf', 'accesslog', 'actionscript', 'ada', 'angelscript', 'applescript', 'arcade', 'arduino', 'armasm', 'asciidoc', 'aspectj', 'autohotkey', 'autoit', 'avrasm', 'awk', 'axapta', 'basic', 'bnf', 'brainfuck', 'cal', 'capnproto', 'ceylon', 'clean', 'clojure-repl', 'clojure', 'cmake', 'coq', 'cos', 'cpp', 'crmsh', 'crystal', 'csp', 'd', 'dart', 'delphi', 'django', 'dns', 'dockerfile', 'dos', 'dsconfig', 'dts', 'dust', 'ebnf', 'elixir', 'elm', 'erb', 'erlang-repl', 'erlang', 'excel', 'fix', 'flix', 'fortran', 'fsharp', 'gams', 'gauss', 'gcode', 'gherkin', 'glsl', 'gml', 'go', 'golo', 'gradle', 'groovy', 'haml', 'handlebars', 'haskell', 'haxe', 'hsp', 'htmlbars', 'hy', 'inform7', 'irpf90', 'isbl', 'jboss-cli', 'julia-repl', 'julia', 'lasso', 'ldif', 'leaf', 'lisp', 'livecodeserver', 'livescript', 'llvm', 'lsl', 'mathematica', 'matlab', 'maxima', 'mel', 'mercury', 'mipsasm', 'mizar', 'mojolicious', 'monkey', 'moonscript', 'n1ql', 'nimrod', 'nix', 'nsis', 'ocaml', 'openscad', 'oxygene', 'parser3', 'pf', 'pgsql', 'pony', 'powershell', 'processing', 'profile', 'prolog', 'protobuf', 'puppet', 'purebasic', 'q', 'qml', 'r', 'reasonml', 'rib', 'roboconf', 'routeros', 'rsl', 'ruleslanguage', 'sas', 'scala', 'scheme', 'scilab', 'smali', 'smalltalk', 'sml', 'sqf', 'stan', 'stata', 'step21', 'stylus', 'subunit', 'taggerscript', 'tap', 'tcl', 'tex', 'thrift', 'tp', 'twig', 'vala', 'vbnet', 'vbscript-html', 'vbscript', 'verilog', 'vhdl', 'vim', 'x86asm', 'xl', 'xquery', 'zephir' );
+
+	foreach( $languages as $value ) {
+		if ( strpos( get_post()->post_content, 'language-' . $value ) !== false ) {
+			echo '<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/' . $value . '.min.js"></script>';
+		}
+	}
+
+	echo '<script>hljs.initHighlightingOnLoad();</script>';
+}
