@@ -5,10 +5,11 @@
 
 function tunalog_register_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style( 'tunalog-style', get_stylesheet_uri() . '?v=' . time(), array(), $theme_version );
+	//wp_enqueue_style( 'tunalog-style', get_stylesheet_uri() . '?v=' . time(), array(), $theme_version );
+	wp_enqueue_style( 'tunalog-style', get_stylesheet_uri(), array(), $theme_version );
 
 	if ( get_theme_mod( 'highlight_js', 'enabled' ) == 'enabled' ) {
-		wp_enqueue_style( 'tunalog-highlight-style', get_template_directory_uri() . '/assets/css/highlight.css' . '?v=' . time(), array(), $theme_version);
+		wp_enqueue_style( 'tunalog-highlight-style', get_template_directory_uri() . '/assets/css/highlight.css', array(), $theme_version);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'tunalog_register_styles' );
