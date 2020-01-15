@@ -974,118 +974,141 @@ body.has-featured-image .singular-header .header__wrapper {
     text-decoration: underline;
 }
 
-.singular-article .article__comments .comment:not(:last-child) {
+.singular-article .article__comments .comment:not(:last-child),
+.singular-article .article__comments .pingback:not(:last-child) {
     margin-bottom: calc(var(--marginDistance) / 2);
 }
 
-.singular-article .article__comments .comment.depth-1:not(:last-child) {
+.singular-article .article__comments .comment.depth-1:not(:last-child),
+.singular-article .article__comments .pingback.depth-1:not(:last-child) {
     border-bottom: 1px solid var(--borderColor);
     padding-bottom: calc(var(--marginDistance) / 3);
 }
 
-.singular-article .article__comments .comment .comment-author {
+.singular-article .article__comments .comment .comment-author,
+.singular-article .article__comments .pingback .comment-author {
     position: relative;
     display: inline;
 }
 
-.singular-article .article__comments .comment .comment-author img {
+.singular-article .article__comments .comment .comment-author img,
+.singular-article .article__comments .pingback .comment-author img {
     position: absolute;
     left: calc(-32px - (var(--marginDistance) / 3));
     border-radius: 500em;
     top: -3px;
 }
 
-.singular-article .article__comments .comment .comment-author .fn {
+.singular-article .article__comments .comment .comment-author .fn,
+.singular-article .article__comments .pingback .comment-author .fn {
     font-style: normal;
     font-weight: bold;
     color: var(--headerTextColor);
 }
 
-.singular-article .article__comments .comment .comment-author .fn::after {
+.singular-article .article__comments .comment .comment-author .fn::after,
+.singular-article .article__comments .pingback .comment-author .fn::after {
     content: "．";
     color: var(--secondaryTextColor);
     margin-right: -3px;
 }
 
-.singular-article .article__comments .comment .comment-author .fn a {
+.singular-article .article__comments .comment .comment-author .fn a,
+.singular-article .article__comments .pingback .comment-author .fn a {
     color: var(--headerTextColor);
     text-decoration: none;
 }
 
-.singular-article .article__comments .comment .comment-author .fn a:hover {
+.singular-article .article__comments .comment .comment-author .fn a:hover,
+.singular-article .article__comments .pingback .comment-author .fn a:hover  {
     border-bottom: 2px solid currentColor;
 }
 
-.singular-article .article__comments .comment .comment-author .says {
+.singular-article .article__comments .comment .comment-author .says,
+.singular-article .article__comments .pingback .comment-author .says {
     display: none;
 }
 
-.singular-article .article__comments .comment .comment-meta {
+.singular-article .article__comments .comment .comment-meta,
+.singular-article .article__comments .pingback .comment-meta {
     font-size: .9rem;
     display: inline;
 }
 
-.singular-article .article__comments .comment .comment-meta a {
+.singular-article .article__comments .comment .comment-meta a,
+.singular-article .article__comments .pingback .comment-meta a {
     color: var(--secondaryTextColor);
     text-decoration: none;
 }
 
-.singular-article .article__comments .comment .comment-meta a:hover {
+.singular-article .article__comments .comment .comment-meta a:hover,
+.singular-article .article__comments .pingback .comment-meta a:hover {
     padding-bottom: 1px;
     border-bottom: 2px solid currentcolor;
 }
 
-.singular-article .article__comments .comment {
+.singular-article .article__comments .comment,
+.singular-article .article__comments .pingback {
     word-break: break-word;
 }
 
-.singular-article .article__comments .comment p {
+.singular-article .article__comments .comment p,
+.singular-article .article__comments .pingback p {
     margin-top: 1rem;
     color: var(--textColor);
     line-height: 2.1;
 }
 
-.singular-article .article__comments .comment p + p {
+.singular-article .article__comments .comment p + p,
+.singular-article .article__comments .pingback p + p {
     margin-top: calc(var(--marginDistance) / 2);
 }
 
-.singular-article .article__comments .comment p a {
+.singular-article .article__comments .comment p a,
+.singular-article .article__comments .pingback p a {
     color: var(--linkTextColor);
     text-decoration: none;
     border-bottom: 1px solid currentColor;
 }
 
-.singular-article .article__comments .comment p a:hover {
+.singular-article .article__comments .comment p a:hover,
+.singular-article .article__comments .pingback p a:hover {
     border-bottom-width: 2px;
 }
 
-.singular-article .article__comments .comment .reply a {
+.singular-article .article__comments .comment .reply a,
+.singular-article .article__comments .pingback .reply a {
     font-size: .9rem;
     font-weight: bold;
     color: var(--secondaryTextColor);
     text-decoration: none;
 }
 
-.singular-article .article__comments .comment .reply a:hover {
+.singular-article .article__comments .comment .reply a:hover,
+.singular-article .article__comments .pingback .reply a:hover {
     border-bottom: 2px solid currentColor;
 }
 
-.singular-article .article__comments .comment [class*="depth-"] {
+.singular-article .article__comments .comment [class*="depth-"],
+.singular-article .article__comments .pingback [class*="depth-"] {
     margin-top: calc(var(--marginDistance) / 2);
 }
 
-.singular-article .article__comments .comment .depth-2 {
+.singular-article .article__comments .comment .depth-2,
+.singular-article .article__comments .pingback .depth-2 {
     margin-left: calc(25px + (var(--marginDistance) / 3));
 }
 
-.singular-article .article__comments .comment .depth-2 .comment-author img {
+.singular-article .article__comments .comment .depth-2 .comment-author img,
+.singular-article .article__comments .pingback .depth-2 .comment-author img {
     width: 24px;
     height: 24px;
     left: calc(-24px - (var(--marginDistance) / 3));
     top: 0;
 }
 
-.singular-article .article__comments .comment .depth-2 p {
+.singular-article .article__comments .comment .depth-2 p,
+.singular-article .article__comments .pingback .depth-2 p {
     position: relative;
 }
 
@@ -1898,34 +1921,41 @@ body.has-featured-image .singular-header .header__wrapper {
         padding: calc(var(--marginDistance) / 3);
     }
 
-    .singular-article .article__comments .comment .comment-author {
+    .singular-article .article__comments .comment .comment-author,
+    .singular-article .article__comments .pingback .comment-author {
         display: flex;
         align-items: center;
     }
 
-    .singular-article .article__comments .comment .comment-author img {
+    .singular-article .article__comments .comment .comment-author img,
+    .singular-article .article__comments .pingback .comment-author img {
         position: static;
         margin-right: calc(var(--marginDistance) / 6);
     }
 
-    .singular-article .article__comments .comment .comment-author .fn::after {
+    .singular-article .article__comments .comment .comment-author .fn::after,
+    .singular-article .article__comments .pingback .comment-author .fn::after {
         display: none;
     }
 
-    .singular-article .article__comments .comment .comment-meta {
+    .singular-article .article__comments .comment .comment-meta,
+    .singular-article .article__comments .pingback .comment-meta {
         display: block;
         margin-top: calc(var(--marginDistance) / 6);
     }
 
-    .singular-article .article__comments .comment p {
+    .singular-article .article__comments .comment p,
+    .singular-article .article__comments .pingback p {
         margin: calc(var(--marginDistance) / 4) 0;
     }
 
-    .singular-article .article__comments .comment:not(:last-child) {
+    .singular-article .article__comments .comment:not(:last-child),
+    .singular-article .article__comments .pingback:not(:last-child) {
         margin-bottom: calc(var(--marginDistance) / 2);
     }
 
-    .singular-article .article__comments .comment .depth-2 {
+    .singular-article .article__comments .comment .depth-2,
+    .singular-article .article__comments .pingback .depth-2 {
         margin-left: calc(var(--marginDistance) / 3);
     }
 
