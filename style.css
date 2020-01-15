@@ -1476,6 +1476,16 @@ body.has-featured-image .singular-header .header__wrapper {
 }
 
 /**
+ *
+ */
+
+.singular-article .article__content .has-drop-cap:not(:focus):first-letter {
+    font-size: 3.75rem;
+    line-height: 1;
+    margin: 0 .8rem 0rem 0;
+}
+
+/**
  * Separator
  */
 
