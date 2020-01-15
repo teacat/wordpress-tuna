@@ -289,6 +289,33 @@ class Tunalog_Customize {
 			)
 		);
 
+		/* 強制圖片長寬比 ---------------------------------------------------- */
+
+		$wp_customize->add_setting(
+			'image_aspected',
+			array(
+				'capability'        => 'edit_theme_options',
+				'default'           => 'disabled',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+			)
+		);
+
+		$wp_customize->add_control(
+			'image_aspected',
+			array(
+				'type'     => 'radio',
+				'section'  => 'content_options',
+				'priority' => 10,
+				'label'    => '強制圖片長寬比',
+				'description' => '強制將文章裡的所有圖片裁切並以 16:9 的長寬比呈現。',
+				'choices'  => array(
+					'enabled'        => '啟用並置上',
+					'enabled_center' => '啟用並置中',
+					'disabled'       => '停用',
+				),
+			)
+		);
+
 		/* 程式碼標註 ---------------------------------------------------- */
 
 		$wp_customize->add_setting(
