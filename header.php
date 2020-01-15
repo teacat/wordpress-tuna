@@ -13,13 +13,17 @@
         $description = is_singular() && $post->post_password == '' ? wp_trim_words( $post->post_content, 180 ) : get_bloginfo( 'description' );
         $url         = is_singular() ? get_the_permalink() : home_url( $wp->request );
         $site_name   = get_bloginfo( 'name' );
-        $image       = is_singular() && get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/assets/images/16-9.png';
-
-        if ( is_singular() && $image == get_template_directory_uri() . '/assets/images/16-9.png' ) {
+        $images      = array();
+        if( is_singular() && get_the_post_thumbnail_url()) {
+            array_push($images, get_the_post_thumbnail_url());
+        } else if( is_singular() && !get_the_post_thumbnail_url() ) {
             $output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
-            if ( !empty($matches[1][0]) ) {
-                $image = $matches[1][0];
+            foreach( $matches[1] as $value ) {
+                array_push($images, $value);
             }
+        }
+        if( empty( $images ) ) {
+            array_push($images, get_template_directory_uri() . '/assets/images/16-9.png');
         }
     ?>
     <link rel="canonical" href="<?php echo $url; ?>">
@@ -31,8 +35,10 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<?php echo $title ?>">
     <meta name="twitter:description" content="<?php echo $description ?>">
-    <meta property="og:image" content="<?php echo $image; ?>">
-    <meta name="twitter:image" content="<?php echo $image; ?>">
+    <?php foreach( $images as $value ) { ?>
+    <meta property="og:image" content="<?php echo $value; ?>">
+    <meta name="twitter:image" content="<?php echo $value; ?>">
+    <?php } ?>
     <?php } ?>
     <?php tunalog_dynamic_highlight_loader(); ?>
     <link href="//fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
