@@ -61,6 +61,12 @@
     if ( get_theme_mod( 'comment_style', 'standard' ) == 'standard' ) {
         array_push( $classes, 'is-standard-comment' );
     }
+    if ( get_theme_mod( 'image_aspected', 'disabled' ) == 'enabled' ) {
+        array_push( $classes, 'is-aspected-top' );
+    }
+    if ( get_theme_mod( 'image_aspected', 'disabled' ) == 'enabled_center' ) {
+        array_push( $classes, 'is-aspected-center' );
+    }
     array_push( $classes, 'is-preload' );
 ?>
 <body <?php body_class($classes); ?>>

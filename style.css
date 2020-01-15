@@ -152,6 +152,23 @@ body.is-standard-comment .singular-article .article__comments .comments__count {
     margin-bottom: var(--marginDistance);
 }
 
+@media only screen and (min-width: 740px) {
+    body.is-aspected-top .singular-article .article__content figure.wp-block-image img,
+    body.is-aspected-center .singular-article .article__content figure.wp-block-image img {
+        width: 710px;
+        height: 399px;
+        object-fit: cover;
+    }
+
+    body.is-aspected-top .singular-article .article__content figure.wp-block-image img {
+        object-position: top;
+    }
+
+    body.is-aspected-center .singular-article .article__content figure.wp-block-image img {
+        object-position: center;
+    }
+}
+
 /* -------------------------------------------------------------------------- */
 
 /*
@@ -1479,14 +1496,25 @@ body.has-featured-image .singular-header .header__wrapper {
  *
  */
 
+.singular-article .article__content figure[class*="align"] {
+    width: 100%;
+}
+
+.singular-article .article__content figure[class*="align"] img {
+    margin: 0 auto;
+    display: block;
+}
+
 .singular-article .article__content figure.wp-block-image > a {
     text-decoration: none;
     border-bottom: none;
 }
 
-.singular-article .article__content figure.wp-block-image > img {
+.singular-article .article__content figure.wp-block-image img {
     border: 1px solid var(--borderColor);
 }
+
+
 
 /**
  * Media Text
