@@ -1426,6 +1426,10 @@ body.has-featured-image .singular-header .header__wrapper {
     font-style: normal;
 }
 
+.singular-article .article__content blockquote.wp-block-quote p:last-of-type {
+    margin-bottom: calc(var(--marginDistance) / 2);
+}
+
 /**
  * Pull Quote
  */
