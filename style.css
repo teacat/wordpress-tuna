@@ -726,6 +726,7 @@ body.has-featured-image .singular-header .header__wrapper {
     font-weight: bold;
     color: var(--headerTextColor);
     text-decoration: none;
+    flex: 1;
 }
 
 .singular-article .article__pagenav a:hover .pagenav__title {
