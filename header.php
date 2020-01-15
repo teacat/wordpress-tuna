@@ -14,6 +14,13 @@
         $url         = is_singular() ? get_the_permalink() : home_url( $wp->request );
         $site_name   = get_bloginfo( 'name' );
         $image       = is_singular() && get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/assets/images/16-9.png';
+
+        if ( is_singular() && $image == get_template_directory_uri() . '/assets/images/16-9.png' ) {
+            $output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+            if ( !empty($matches[1][0]) ) {
+                $image = $matches[1][0];
+            }
+        }
     ?>
     <link rel="canonical" href="<?php echo $url; ?>">
     <meta property="og:type" content="<?php echo $type ?>">
