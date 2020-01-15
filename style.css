@@ -1783,13 +1783,13 @@ body.has-featured-image .singular-header .header__wrapper {
         margin-bottom: calc(var(--marginDistance) / 2);
     }
 
-    .singular-article .article__featured img {
+    .singular-article .article__featured {
         height: 30vh;
         min-height: 30vh;
     }
 
     @media screen and (orientation: landscape) {
-        .singular-article .article__featured img {
+        .singular-article .article__featured {
             height: 30vh;
             min-height: 250px;
         }
