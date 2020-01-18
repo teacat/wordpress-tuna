@@ -27,7 +27,7 @@
             <?php } ?>
             <div class="article__content">
                 <?php if( !post_password_required() ) { ?>
-                    <?php echo wp_trim_words( get_the_content(), 180 ); ?>
+                    <?php echo wp_trim_words( has_excerpt() ? get_the_excerpt() : get_the_content(), 180 ); ?>
                 <?php } ?>
             </div>
             <div class="article__meta">
