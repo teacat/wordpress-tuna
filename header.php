@@ -7,10 +7,9 @@
     <?php if ( get_theme_mod( 'social_friendly', 'enabled' ) == 'enabled' ) {
         global $post;
         global $wp;
-
         $type        = is_singular() ? 'object' : 'website';
-        $title       = is_singular() ? get_the_title() : get_bloginfo( 'name' );
-        $description = is_singular() && $post->post_password == '' ? wp_trim_words( $post->post_content, 180 ) : get_bloginfo( 'description' );
+        $title       = is_singular() ? wp_trim_words(get_the_title(), 30, '…' ) : get_bloginfo( 'name' );
+        $description = is_singular() && $post->post_password == ''  ? wp_trim_words( has_excerpt() ? get_the_excerpt() : $post->post_content , 180 ) : get_bloginfo( 'description' );
         $url         = is_singular() ? get_the_permalink() : home_url( $wp->request );
         $site_name   = get_bloginfo( 'name' );
         $images      = array();
