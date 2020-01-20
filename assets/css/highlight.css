@@ -9,6 +9,11 @@
 	color: #50A14F;
 }
 
+.hljs-variable,
+.hljs-selector-tag {
+	color: #E45649;
+}
+
 .hljs-attr,
 .hljs-attribute {
 	color: #986801;
