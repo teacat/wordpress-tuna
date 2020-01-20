@@ -1,7 +1,7 @@
 /*
 Theme Name: Tunalog
 Text Domain: tunalog
-Version: 1.13
+Version: 1.14
 Requires at least: 5.3
 Requires PHP: 5.2.4
 Description: 一個極簡設計的單欄式 WordPress 部落格佈景主題，並帶有 Prism 的程式碼標記功能。同時支援 WordPress 的區塊編輯器以達成最佳的使用者閱讀體驗！
@@ -1701,12 +1701,6 @@ body.has-featured-image .singular-header .header__wrapper {
     font-family: "Fira Code", "Noto Sans TC";
 }
 
-.singular-article .article__content pre.wp-block-code span.comment.token {
-    font-size: .9rem;
-    letter-spacing: .02rem;
-}
-
-
 /**
  * Inline Code
  */
@@ -1922,7 +1916,8 @@ body.has-featured-image .singular-header .header__wrapper {
     }
 
     .singular-article .article__content pre.wp-block-code {
-        padding: calc(var(--marginDistance) / 3);
+        padding  : calc(var(--marginDistance) / 3);
+        font-size: .85rem;
     }
 
     .singular-article .article__content hr.wp-block-separator {
