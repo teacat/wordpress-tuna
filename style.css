@@ -1,7 +1,7 @@
 /*
 Theme Name: Tunalog
 Text Domain: tunalog
-Version: 1.14
+Version: 1.15
 Requires at least: 5.3
 Requires PHP: 5.2.4
 Description: 一個極簡設計的單欄式 WordPress 部落格佈景主題，並帶有 Prism 的程式碼標記功能。同時支援 WordPress 的區塊編輯器以達成最佳的使用者閱讀體驗！
@@ -28,7 +28,8 @@ Tunalog 裡的檔案皆以「別當個雞掰人」公眾授權條款釋出，這
     --headerTextColor: #333;
     --secondaryTextColor: #777;
 
-    --tertiaryBackgroundColor : #222;
+    --outerBackgroundColor : #222;
+    --tertiaryBackgroundColor : #f5f5f5;
     --secondaryBackgroundColor: #f9f9f9;
     --labelBackgroundColor: #f5f5f5;
     --dividerColor: #EEE;
@@ -343,9 +344,9 @@ body > .wrapper > .content {
     top: 0;
     bottom: 0;
     z-index: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     transition: transform .15s ease, visibility .15s ease;
-    background: var(--tertiaryBackgroundColor);
+    background: var(--outerBackgroundColor);
     color: #FFF;
     width: 400px;
     padding: calc(var(--marginDistance) / 3) var(--marginDistance);
@@ -619,6 +620,99 @@ body:not(.has-featured-image) .global-sidebar .sidebar__header {
 /*
 /* -------------------------------------------------------------------------- */
 
+.global-nav {
+    background: var(--tertiaryBackgroundColor);
+    display: block;
+    margin-top: -1rem;
+}
+
+.global-nav > .nav__wrapper {
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.global-nav .menu {
+    display: flex;
+}
+
+.global-nav a {
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.global-nav .menu > .menu-item {
+    padding: 1rem 2rem;
+    padding-left: 0;
+}
+
+.global-nav .menu > .menu-item:hover a {
+    border-bottom: 2px solid currentColor;
+}
+
+.global-nav .menu,
+.global-nav .sub-menu {
+    padding: 0;
+}
+
+.global-nav .menu-item {
+    list-style: none;
+    position: relative;
+}
+
+.global-nav .menu > .menu-item > .sub-menu {
+    display: none;
+    position: absolute;
+    left: -1rem;
+    z-index: 1;
+    margin: 1rem;
+    margin-top: .9rem;
+    margin-left: 0rem;
+    background: #fff;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--borderColor);
+}
+
+.global-nav .menu .sub-menu {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0;
+    width: max-content;
+}
+
+.global-nav .menu .sub-menu .sub-menu {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.global-nav .menu-item:hover > .sub-menu,
+.global-nav .menu-item:focus-within > .sub-menu {
+    display: flex;
+}
+
+.global-nav .menu .sub-menu .menu-item {
+    width: 100%;
+}
+
+.global-nav .menu .sub-menu .menu-item a {
+    display: block;
+    border-bottom: 1px solid var(--borderColor);
+    padding: .8rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-left: 3px solid transparent;
+}
+
+.global-nav .menu .sub-menu .menu-item a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*
+/* -------------------------------------------------------------------------- */
+
 .global-pagination {
     max-width: 710px;
     margin-left: auto;
@@ -782,10 +876,17 @@ body.has-featured-image .singular-header .header__wrapper {
 }
 
 .singular-article .article__footer + .article__pageend,
-.singular-article .article__footer + .article__pagenav {
+.singular-article .article__footer + .article__pagenav,
+.singular-article .article__content + .article__pageend {
     border-top: 1px solid var(--borderColor);
     padding-top: var(--marginDistance);
 }
+
+.singular-article .article__content + .article__pageend {
+    margin-top: calc(var(--marginDistance) * 2);
+}
+
+
 
 /**
  * Page End
@@ -1828,6 +1929,17 @@ body.has-featured-image .singular-header .header__wrapper {
         padding-right: calc(var(--marginDistance) / 2);
         width: 100vw;
         transform: translateX(100vw);
+    }
+
+    .global-nav .menu > .menu-item > .sub-menu {
+        position: fixed;
+        left: 0;
+        right: 0;
+        width: 100vw;
+    }
+
+    .global-nav .menu > .menu-item:first-child {
+        margin-left: calc(var(--marginDistance) / 3);
     }
 
     .wrapper {

@@ -8,7 +8,8 @@
         global $post;
         global $wp;
         $type        = is_singular() ? 'object' : 'website';
-        $title       = is_singular() ? wp_trim_words(get_the_title(), 30, '…' ) : get_bloginfo( 'name' );
+        //$title       = is_singular() ? wp_trim_words(get_the_title(), 30, '…' ) : get_bloginfo( 'name' );
+        $title       = is_singular() ? get_the_title() : get_bloginfo( 'name' );
         $description = is_singular() && $post->post_password == ''  ? wp_trim_words( has_excerpt() ? get_the_excerpt() : $post->post_content , 180 ) : get_bloginfo( 'description' );
         $url         = is_singular() ? get_the_permalink() : home_url( $wp->request );
         $site_name   = get_bloginfo( 'name' );
@@ -121,5 +122,15 @@
     </div>
 </div>
 <!-- / .global-header -->
+
+<!-- .global-nav -->
+<div class="global-nav">
+    <?php if ( has_nav_menu('tunalog-homepage-menu') ) {
+        wp_nav_menu( array(
+        'theme_location'  => 'tunalog-homepage-menu',
+        'container_class' => 'nav__wrapper' ) );
+    } ?>
+</div>
+<!-- / .global-nav -->
 
 <?php } ?>

@@ -32,11 +32,13 @@ document.querySelector(".sidebar__close").addEventListener("click", () => {
     <!-- / .article__featured -->
     <?php } ?>
 
+    <?php if ( !is_page() ) { ?>
     <!-- .article__meta -->
     <aside class="article__meta">
         <time class="meta__time"><a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j'));  ?>"><?php echo get_the_date(); ?></a></time>
     </aside>
     <!-- / .article__meta -->
+    <?php } ?>
 
     <!-- .article__title -->
     <header class="article__title"><?php the_title(); ?></header>
@@ -76,6 +78,7 @@ document.querySelector(".sidebar__close").addEventListener("click", () => {
     <?php comments_template(); ?>
     <!-- / .article__comments -->
 
+    <?php if ( !is_page() ) { ?>
     <!-- .article__pagenav -->
     <nav class="article__pagenav">
         <?php
@@ -95,6 +98,7 @@ document.querySelector(".sidebar__close").addEventListener("click", () => {
         <?php } ?>
     </nav>
     <!-- / .article__pagenav -->
+    <?php } ?>
 </article>
 <!-- / .article -->
 <?php } } ?>

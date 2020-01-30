@@ -15,6 +15,15 @@ function tunalog_register_styles() {
 add_action( 'wp_enqueue_scripts', 'tunalog_register_styles' );
 
 /**
+ * 自訂選單
+ */
+
+function tunalog_register_menu() {
+  register_nav_menu('tunalog-homepage-menu', '首頁選單');
+}
+add_action( 'init', 'tunalog_register_menu' );
+
+/**
  * 小工具
  */
 
