@@ -123,14 +123,16 @@
 </div>
 <!-- / .global-header -->
 
+<?php if ( has_nav_menu('tunalog-homepage-menu') ) { ?>
 <!-- .global-nav -->
 <div class="global-nav">
-    <?php if ( has_nav_menu('tunalog-homepage-menu') ) {
+    <?php
         wp_nav_menu( array(
         'theme_location'  => 'tunalog-homepage-menu',
         'container_class' => 'nav__wrapper' ) );
-    } ?>
+    ?>
 </div>
 <!-- / .global-nav -->
+<?php } ?>
 
 <?php } ?>
