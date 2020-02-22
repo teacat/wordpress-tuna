@@ -1,6 +1,7 @@
 <?php
-	$has_pageend_1 = is_active_sidebar( 'pageend-1' );
-	$has_pageend_2 = is_active_sidebar( 'pageend-2' );
+	$has_pageend_1   = is_active_sidebar( 'pageend-1' );
+	$has_pageend_2   = is_active_sidebar( 'pageend-2' );
+	$comments_number = absint( get_comments_number() );
 ?>
 
 <?php if ( $has_pageend_1 ) { ?>
@@ -12,10 +13,11 @@
 <?php } ?>
 
 <?php if ( !post_password_required() ) { ?>
+<?php if ( ( !comments_open() && $comments_number > 0 ) || comments_open() || ( !comments_open() && pings_open() && $comments_number > 0) ) { ?>
 <!-- .article__comments -->
 <aside class="article__comments">
 	<?php
-		if ( comments_open() || pings_open() ) {
+		if ( comments_open() ) {
 			comment_form(
 				array(
 				'class_form'         => 'comments__form',
@@ -24,7 +26,6 @@
 				)
 			);
 		}
-		$comments_number = absint( get_comments_number() );
 	?>
 	<?php if ( $comments_number > 0 ) { ?>
 	<div id="comments" class="comments__count">這篇文章有 <?php echo $comments_number; ?> 則留言</div>
@@ -57,6 +58,7 @@
 	<?php } ?>
 </aside>
 <!-- / .article__comments -->
+<?php } ?>
 <?php } ?>
 
 <?php if ( $has_pageend_2 ) { ?>
