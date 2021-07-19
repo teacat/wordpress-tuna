@@ -58,6 +58,7 @@
 
 <script>
 window.addEventListener('load', () => document.body.classList.remove('is-preload'));
+window.addEventListener('load', () => document.body.appendChild(document.querySelector("#wpadminbar")))
 </script>
 <?php wp_footer(); ?>
 </body>
