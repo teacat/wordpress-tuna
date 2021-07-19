@@ -49,6 +49,9 @@
     if ( get_theme_mod( 'header_width', 'standard' ) == 'wide' ) {
         array_push( $classes, 'is-wide-aside' );
     }
+    if ( get_theme_mod( 'content_width', '710px' ) == '610px' ) {
+        array_push( $classes, 'is-610px' );
+    }
     if ( get_theme_mod( 'featured_picture_visibility', 'disabled' ) == 'enabled' ) {
         array_push( $classes, 'is-featured-shown' );
     }
