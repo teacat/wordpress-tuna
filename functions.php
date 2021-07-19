@@ -325,6 +325,32 @@ class Tunalog_Customize {
 			)
 		);
 
+		/* 全域寬度屬性 ---------------------------------------------------- */
+
+		$wp_customize->add_setting(
+			'content_width',
+			array(
+				'capability'        => 'edit_theme_options',
+				'default'           => 'disabled',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+			)
+		);
+
+		$wp_customize->add_control(
+			'content_width',
+			array(
+				'type'     => 'radio',
+				'section'  => 'content_options',
+				'priority' => 10,
+				'label'    => '全域寬度屬性',
+				'description' => '文章的寬度可以更窄，避免內容過短時造成的空虛感。',
+				'choices'  => array(
+					'710px' => '710px',
+					'610px' => '610px',
+				),
+			)
+		);
+
 		/* 程式碼標註 ---------------------------------------------------- */
 
 		$wp_customize->add_setting(
