@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" <?php language_attributes(); ?>>
+<html class="no-js <?php echo ( get_theme_mod( 'font_size', '16px' ) == '18px' ) ? 'is-18px' : '' ?>" <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,12 @@
     <?php } ?>
     <?php } ?>
     <?php tunalog_dynamic_highlight_loader(); ?>
+    <?php if ( get_theme_mod( 'font_family', 'sans' ) == 'sans' ) { ?>
     <link href="//fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <?php } ?>
+    <?php if ( get_theme_mod( 'font_family', 'sans' ) == 'serif' ) { ?>
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif+TC&display=swap" rel="stylesheet">
+    <?php } ?>
     <link href="//fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
 <?php
@@ -75,6 +80,9 @@
     }
     if ( get_theme_mod( 'image_aspected', 'disabled' ) == 'enabled_center' ) {
         array_push( $classes, 'is-aspected-center' );
+    }
+    if ( get_theme_mod( 'font_family', 'sans' ) == 'serif' ) {
+        array_push( $classes, 'is-serif' );
     }
     array_push( $classes, 'is-preload' );
 ?>

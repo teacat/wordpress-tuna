@@ -331,7 +331,7 @@ class Tunalog_Customize {
 			'content_width',
 			array(
 				'capability'        => 'edit_theme_options',
-				'default'           => 'disabled',
+				'default'           => '710px',
 				'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
 			)
 		);
@@ -347,6 +347,58 @@ class Tunalog_Customize {
 				'choices'  => array(
 					'710px' => '710px',
 					'610px' => '610px',
+				),
+			)
+		);
+
+		/* 字型樣式 ---------------------------------------------------- */
+
+		$wp_customize->add_setting(
+			'font_family',
+			array(
+				'capability'        => 'edit_theme_options',
+				'default'           => 'sans',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+			)
+		);
+
+		$wp_customize->add_control(
+			'font_family',
+			array(
+				'type'     => 'radio',
+				'section'  => 'content_options',
+				'priority' => 10,
+				'label'    => '字型樣式',
+				'description' => '你可以替網站內容選擇一個更相符的字型風格。',
+				'choices'  => array(
+					'sans' => 'Noto Sans',
+					'serif' => 'Noto Serif',
+				),
+			)
+		);
+
+		/* 字體大小 ---------------------------------------------------- */
+
+		$wp_customize->add_setting(
+			'font_size',
+			array(
+				'capability'        => 'edit_theme_options',
+				'default'           => '16px',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+			)
+		);
+
+		$wp_customize->add_control(
+			'font_size',
+			array(
+				'type'     => 'radio',
+				'section'  => 'content_options',
+				'priority' => 10,
+				'label'    => '字體大小',
+				'description' => '網站的字體可以偏大令人更容易閱讀，同時搭配「全域寬度屬性」還有自己的撰寫習慣，可以讓整個網站的版面不再那麼空白。',
+				'choices'  => array(
+					'16px' => '16px',
+					'18px' => '18px',
 				),
 			)
 		);

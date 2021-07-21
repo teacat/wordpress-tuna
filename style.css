@@ -1,7 +1,7 @@
 /*
 Theme Name: Tunalog
 Text Domain: tunalog
-Version: 1.27
+Version: 1.28
 Requires at least: 5.3
 Requires PHP: 5.2.4
 Description: 一個極簡設計的單欄式 WordPress 部落格佈景主題，並帶有 Highlight.js 的程式碼標記功能。同時支援 WordPress 的區塊編輯器以達成最佳的使用者閱讀體驗！
@@ -36,7 +36,7 @@ Tunalog 裡的檔案皆以「別當個雞掰人」公眾授權條款釋出，這
     --borderColor: #eee;
     --borderHoverColor: #dedede;
 
-    --h1FontSize: 2.9rem;
+    --h1FontSize: 2.6rem;
     --h2FontSize: 2.2rem;
     --h3FontSize: 1.9rem;
     --h4FontSize: 1.5rem;
@@ -59,6 +59,10 @@ html {
     background: #fff;
 }
 
+html.is-18px {
+    font-size: 18px;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -74,7 +78,7 @@ body {
     height: 100%;
 }
 
-* {
+body * {
     box-sizing: border-box;
     font-family: "Noto Sans TC";
 }
@@ -87,6 +91,10 @@ body {
 body.is-610px {
     --asideWidth: 610px;
     --contentWidth: 610px;
+}
+
+body.is-serif * {
+    font-family: "Noto Serif TC";
 }
 
 @media only screen and (max-width: 740px) {
