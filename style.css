@@ -1,7 +1,7 @@
 /*
 Theme Name: Tunalog
 Text Domain: tunalog
-Version: 1.28
+Version: 1.30
 Requires at least: 5.3
 Requires PHP: 5.2.4
 Description: 一個極簡設計的單欄式 WordPress 部落格佈景主題，並帶有 Highlight.js 的程式碼標記功能。同時支援 WordPress 的區塊編輯器以達成最佳的使用者閱讀體驗！
@@ -46,6 +46,8 @@ Tunalog 裡的檔案皆以「別當個雞掰人」公眾授權條款釋出，這
     --asideWidth: 710px;
     --contentWidth: 710px;
 
+    --paragraphLineHeight: 2.1;
+
     --marginDistance: 2.8rem;
 }
 
@@ -61,6 +63,12 @@ html {
 
 html.is-18px {
     font-size: 18px;
+}
+
+@media only screen and (max-width: 740px) {
+    html.is-18px {
+        font-size: 16px;
+    }
 }
 
 body {
@@ -592,9 +600,9 @@ body:not(.has-featured-image) .global-sidebar .sidebar__header {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: justify;
-    line-height: 1.8;
+    line-height: var(--paragraphLineHeight);
     letter-spacing: 0.01rem;
-    max-height: calc((1rem * 1.8) * 3);
+    max-height: calc((1rem * var(--paragraphLineHeight)) * 3);
 }
 
 .global-articles .articles__article > .article__featured {
@@ -961,6 +969,10 @@ body.has-featured-image .singular-header .header__wrapper {
     align-items: flex-end;
 }
 
+.singular-article .article__comments .comments__form {
+    line-height: var(--paragraphLineHeight);
+}
+
 .singular-article .article__comments .comments__header small {
     margin-left: auto;
 }
@@ -1197,7 +1209,7 @@ body.has-featured-image .singular-header .header__wrapper {
 .singular-article .article__comments .pingback p {
     margin-top: 1rem;
     color: var(--textColor);
-    line-height: 2.1;
+    line-height: var(--paragraphLineHeight);
 }
 
 .singular-article .article__comments .comment p + p,
@@ -1597,7 +1609,7 @@ body.has-featured-image .singular-header .header__wrapper {
 .singular-article .article__content .wp-block-pullquote blockquote cite {
     color: var(--secondaryTextColor);
     font-style: normal;
-    line-height: 2.1;
+    line-height: var(--paragraphLineHeight);
 }
 
 .singular-article .article__content .wp-block-pullquote::before {
@@ -1802,7 +1814,7 @@ body.has-featured-image .singular-header .header__wrapper {
 .singular-article .article__content figcaption,
 .singular-article .article__content blockquote.wp-block-quote cite,
 .singular-article .article__content pre.wp-block-verse {
-    line-height: 2.1;
+    line-height: var(--paragraphLineHeight);
     letter-spacing: 0.01rem;
 }
 
@@ -1945,7 +1957,7 @@ body.has-featured-image .singular-header .header__wrapper {
     }
 
     .global-articles .articles__article .article__content {
-        line-height: 1.6;
+        line-height: var(--paragraphLineHeight);
         margin-bottom: calc(var(--marginDistance) / 4);
         margin-top: calc(var(--marginDistance) / 4);
     }
