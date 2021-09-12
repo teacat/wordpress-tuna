@@ -1,7 +1,7 @@
 /*
 Theme Name: Tunalog
 Text Domain: tunalog
-Version: 1.31
+Version: 1.32
 Requires at least: 5.3
 Requires PHP: 5.2.4
 Description: 一個極簡設計的單欄式 WordPress 部落格佈景主題，並帶有 Highlight.js 的程式碼標記功能。同時支援 WordPress 的區塊編輯器以達成最佳的使用者閱讀體驗！
@@ -10,6 +10,7 @@ Author: TeaCat
 Author URI: https://github.com/teacat/tunalog
 License: DON'T BE A DICK PUBLIC LICENSE
 License URI: https://github.com/philsturgeon/dbad
+Domain Path: /languages
 
 Tunalog 裡的檔案皆以「別當個雞掰人」公眾授權條款釋出，這意味著你可以更改所有你想改的東西！
 但是希望你可以留下一些授權資訊，好讓神奇蹦蹦原作者（其實就是我啦）受益。

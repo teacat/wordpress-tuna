@@ -42,9 +42,9 @@
         <?php if ( get_theme_mod( 'display_by', 'enabled_all' ) != 'disabled' ) { ?>
         <div class="copyright__right">
             <?php if ( get_theme_mod( 'display_by', 'enabled_all' ) == 'enabled_all' ) { ?>
-            以套用 <a href="//github.com/teacat/tunalog">Tunalog</a> 佈景主題的 <a href="//tw.wordpress.org/">WordPress</a> 發表
+            <?php _e( 'Powered by <a href="//tw.wordpress.org/">WordPress</a> with <a href="//github.com/teacat/tunalog">Tunalog</a> theme', 'tunalog' ); ?>
             <?php } else { ?>
-            驕傲地採用 <a href="//tw.wordpress.org/">WordPress</a> 發表
+            <?php _e ( 'Proudly powered by <a href="//tw.wordpress.org/">WordPress</a>', 'tunalog' ); ?>
             <?php } ?>
         </div>
         <?php } ?>

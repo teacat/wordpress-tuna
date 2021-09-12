@@ -15,6 +15,15 @@ function tunalog_register_styles() {
 add_action( 'wp_enqueue_scripts', 'tunalog_register_styles' );
 
 /**
+ * 語系
+ */
+
+function tunalog_load_theme_textdomain() {
+    load_theme_textdomain( 'tunalog', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'tunalog_load_theme_textdomain' );
+
+/**
  * 自訂選單
  */
 

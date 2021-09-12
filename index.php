@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
 <?php if ( is_search() ) { ?>
-<form class="global-search" method="get" action="<?php echo home_url('/'); ?>">
-    <input type="text" class="search__field" name="s" placeholder="在此輸入關鍵字…" value="<?php the_search_query(); ?>">
-    <input class="search__button" type="submit" value="搜尋">
+<form class="global-search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+    <input type="text" class="search__field" name="s" placeholder="<?php _e( 'Search anything...', 'tunalog' ); ?>" value="<?php the_search_query(); ?>">
+    <input class="search__button" type="submit" value="<?php _e( 'Search', 'tunalog' ); ?>">
 </form>
 <?php } ?>
 
@@ -56,15 +56,15 @@
 <div class="global-pagination">
     <div class="pagination__previous">
         <?php if ($paged != 1) { ?>
-        <?php echo previous_posts_link( '← 新文章' ); ?>
+        <?php echo previous_posts_link( __( '← Newer Posts', 'tunalog' ) ); ?>
         <?php } ?>
     </div>
     <div class="pagination__info">
-        目前第 <?php echo $paged ?> 頁，共有 <?php echo $total_pages ?> 頁
+        <?php printf( __('Page %s of %s', 'tunalog'), $paged, $total_pages ); ?>
     </div>
     <div class="pagination__next">
         <?php if ($paged != $total_pages) { ?>
-        <?php echo next_posts_link( '舊文章 →' ); ?>
+        <?php echo next_posts_link( __( 'Older Posts →', 'tunalog' ) ); ?>
         <?php } ?>
     </div>
 </div>
@@ -74,8 +74,8 @@
 <?php if ( is_search() && $total_pages == 0 ) { ?>
 <!-- .global-nothing -->
 <div class="global-nothing">
-    <div class="nothing__header">找不到文章</div>
-    <div class="nothing__description">請試著變換搜尋關鍵字</div>
+    <div class="nothing__header"><?php _e( 'No posts found', 'tunalog'); ?></div>
+    <div class="nothing__description"><?php _e( 'Try another keyword', 'tunalog'); ?></div>
 </div>
 <!-- / .global-nothing -->
 <?php } ?>

@@ -28,7 +28,7 @@
 		}
 	?>
 	<?php if ( $comments_number > 0 ) { ?>
-	<div id="comments" class="comments__count">這篇文章有 <?php echo $comments_number; ?> 則留言</div>
+	<div id="comments" class="comments__count"><?php printf( _n( '%s thought on the post', '%s thoughts on the post', $comments_number, 'tunalog' ), number_format_i18n( $comments_number )); ?></div>
 	<!-- .comments_wrapper -->
 	<div class="comments_wrapper">
 		<?php
@@ -42,8 +42,8 @@
 		<?php if ( get_comment_pages_count() > 1 ) { ?>
 		<div class="comments_pagination">
 			<?php
-				$previous_comments = get_previous_comments_link( '← 舊留言' );
-				$next_comments     = get_next_comments_link( '新留言 →' );
+				$previous_comments = get_previous_comments_link( __( '← Older Comments', 'tunalog' ) );
+				$next_comments     = get_next_comments_link( __( 'Newer Comments →', 'tunalog' ) );
 			?>
 			<div class="pagination__previous">
 				<?php if( $previous_comments ) { echo $previous_comments; } ?>

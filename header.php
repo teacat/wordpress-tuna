@@ -101,9 +101,9 @@
 <!-- .singular-header -->
 <div class="singular-header">
     <div class="header__wrapper">
-        <a href="<?php echo get_bloginfo('url'); ?>" class="header__title"><?php echo get_bloginfo('name'); ?></a>
+        <a href="<?php echo esc_url( home_url() ); ?>" class="header__title"><?php echo get_bloginfo('name'); ?></a>
         <?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
-        <a class="header__button" href="#!">選單</a>
+        <a class="header__button" href="#!"><?php _e( 'Menu', 'tunalog' ); ?></a>
         <?php } ?>
     </div>
 </div>
@@ -113,7 +113,7 @@
 
 <!-- .global-header -->
 <div class="global-header">
-    <a class="header__title" href="<?php echo get_bloginfo('url'); ?>">
+    <a class="header__title" href="<?php echo esc_url( home_url() ); ?>">
         <?php if ( is_category() ) { ?>
             <?php echo single_cat_title(); ?>
         <?php } else if ( is_archive() ) { ?>

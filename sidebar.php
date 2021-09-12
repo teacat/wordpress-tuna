@@ -1,8 +1,8 @@
 <!-- .sidebar -->
 <div class="global-sidebar">
     <div class="sidebar__header">
-        選單
-        <a href="#!" class="sidebar__close">關閉</a>
+        <?php _e( 'Menu', 'tunalog' ); ?>
+        <a href="#!" class="sidebar__close"><?php _e( 'Close', 'tunalog' ); ?></a>
     </div>
 
     <?php

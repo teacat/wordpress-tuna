@@ -22,7 +22,7 @@ document.querySelector(".sidebar__close").addEventListener("click", () => {
 
 <?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
 <!-- .article -->
-<article class="singular-article">
+<article <?php post_class( 'singular-article' ); ?>>
 
     <?php if ( has_post_thumbnail() && ! post_password_required() ) {?>
     <!-- .article__featured -->
@@ -87,12 +87,12 @@ document.querySelector(".sidebar__close").addEventListener("click", () => {
         ?>
         <?php if ( get_previous_post() ) { ?>
         <a href="<?php echo get_permalink( $previous->ID ); ?>" class="pagenav__previous">
-            <div class="pagenav__label">上一篇</div>
+            <div class="pagenav__label"><?php _e( 'Previous Post', 'tunalog' ); ?></div>
             <div class="pagenav__title"><?php echo get_the_title($previous) ?></div>
         </a>
         <?php } if ( get_next_post() ) { ?>
         <a href="<?php echo get_permalink( $next->ID ); ?>" class="pagenav__next">
-            <div class="pagenav__label">下一篇</div>
+            <div class="pagenav__label"><?php _e( 'Next Post', 'tunalog' ); ?></div>
             <div class="pagenav__title"><?php echo get_the_title($next) ?></div>
         </a>
         <?php } ?>
