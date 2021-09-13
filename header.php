@@ -1,5 +1,21 @@
 <!DOCTYPE html>
-<html class="no-js <?php echo ( get_theme_mod( 'font_size', '16px' ) == '18px' ) ? 'is-18px' : '' ?>" <?php language_attributes(); ?>>
+<?php
+    $classes = array( '' );
+    if ( get_theme_mod( 'font_size', '16px' ) == '18px' ) {
+        array_push( $classes, 'is-18px' );
+    }
+    if ( get_theme_mod( 'color_scheme', 'auto' ) == 'light' ) {
+        array_push( $classes, 'is-light-theme' );
+    }
+    if ( get_theme_mod( 'color_scheme', 'auto' ) == 'dark' ) {
+        array_push( $classes, 'is-dark-theme' );
+    }
+    if ( get_theme_mod( 'color_scheme', 'auto' ) == 'auto' ) {
+        array_push( $classes, 'is-auto-theme' );
+    }
+    array_push( $classes, 'no-js' );
+?>
+<html class="<?php echo implode( ' ', $classes ); ?>" <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

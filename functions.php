@@ -307,6 +307,33 @@ class Tunalog_Customize {
 			)
 		);
 
+		/* 主題色系 ---------------------------------------------------- */
+
+		$wp_customize->add_setting(
+			'color_scheme',
+			array(
+				'capability'        => 'edit_theme_options',
+				'default'           => 'auto',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+			)
+		);
+
+		$wp_customize->add_control(
+			'color_scheme',
+			array(
+				'type'     => 'radio',
+				'section'  => 'content_options',
+				'priority' => 10,
+				'label'    => '主題色系',
+				'description' => '網站的主要色調可以是亮色（白底黑字）或暗色（黑底白字），但也能取決於讀者的瀏覽器偏好設定（例如：有的行動裝置會在晚上進入夜間模式）。',
+				'choices'  => array(
+					'light' => '亮色',
+					'dark'  => '暗色',
+					'auto'  => '取決於讀者設定',
+				),
+			)
+		);
+
 		/* 強制圖片長寬比 ---------------------------------------------------- */
 
 		$wp_customize->add_setting(
