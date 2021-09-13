@@ -29,13 +29,19 @@ Tunalog 裡的檔案皆以「別當個雞掰人」公眾授權條款釋出，這
     --headerTextColor: #333;
     --secondaryTextColor: #777;
 
-    --outerBackgroundColor: #222;
+    --backgroundColor: #fff;
+    --outerBackgroundColor: #111;
     --tertiaryBackgroundColor: #f5f5f5;
     --secondaryBackgroundColor: #f9f9f9;
     --labelBackgroundColor: #f5f5f5;
     --dividerColor: #eee;
     --borderColor: #eee;
-    --borderHoverColor: #dedede;
+    --codeBlockBackgroundColor: #f9f9f9;
+
+    --inputBackgroundColor: #fff;
+    --inputTextColor: #333;
+    --buttonBackgroundColor: #32373c;
+    --searchButtonTextColor: #fff;
 
     --h1FontSize: 2.6rem;
     --h2FontSize: 2.2rem;
@@ -62,7 +68,7 @@ Tunalog 裡的檔案皆以「別當個雞掰人」公眾授權條款釋出，這
 
 html {
     font-size: var(--primaryFontSize);
-    background: #fff;
+    background: var(--backgroundColor);
 }
 
 html.is-18px {
@@ -143,19 +149,20 @@ body.is-serif * {
     }
 }
 
+/** Was commented before, why? */
 body.is-wide-aside .global-sidebar.sidebar--active + .wrapper .singular-header .header__wrapper {
-    /*padding-left: calc(var(--marginDistance) / 2);*/
-    /*padding-right: calc(var(--marginDistance) / 2);*/
+    padding-left: calc(var(--marginDistance) / 2);
+    padding-right: calc(var(--marginDistance) / 2);
 }
-
+/** Was commented before, why? */
 body.is-wide-aside .global-sidebar.sidebar--active + .wrapper .footer .footer__wrapper {
-    /*padding-left: calc(var(--marginDistance) / 2);*/
-    /*padding-right: calc(var(--marginDistance) / 2);*/
+    padding-left: calc(var(--marginDistance) / 2);
+    padding-right: calc(var(--marginDistance) / 2);
 }
-
+/** Was commented before, why? */
 body.is-wide-aside .global-sidebar.sidebar--active + .wrapper .copyright .copyright__wrapper {
-    /*padding-left: calc(var(--marginDistance) / 2);*/
-    /*padding-right: calc(var(--marginDistance) / 2);*/
+    padding-left: calc(var(--marginDistance) / 2);
+    padding-right: calc(var(--marginDistance) / 2);
 }
 
 body.is-text-justify .singular-article .article__content {
@@ -190,19 +197,63 @@ body.is-standard-comment .singular-article .article__comments .comments__count {
 }
 
 @media only screen and (min-width: 740px) {
-    body.is-aspected-top .singular-article .article__content figure.wp-block-image img,
-    body.is-aspected-center .singular-article .article__content figure.wp-block-image img {
+    body.is-aspected-top .singular-article .article__content .wp-block-image figure img,
+    body.is-aspected-center .singular-article .article__content .wp-block-image figure img {
         width: var(--contentWidth);
-        height: 399px;
         object-fit: cover;
+        aspect-ratio: 16 / 9;
     }
 
-    body.is-aspected-top .singular-article .article__content figure.wp-block-image img {
+    body.is-aspected-top .singular-article .article__content .wp-block-image figure img {
         object-position: top;
     }
 
-    body.is-aspected-center .singular-article .article__content figure.wp-block-image img {
+    body.is-aspected-center .singular-article .article__content .wp-block-image figure img {
         object-position: center;
+    }
+}
+
+html.is-dark-theme {
+    --textColor: #ccc;
+    --linkTextColor: #fff;
+    --headerTextColor: #fff;
+    --secondaryTextColor: #bbb;
+
+    --backgroundColor: #111;
+    --outerBackgroundColor: #000;
+    --tertiaryBackgroundColor: #1b1b1b;
+    --secondaryBackgroundColor: #1b1b1b; /** 232323 */
+    --labelBackgroundColor: #1e1e1e; /** #333 */
+    --dividerColor: #2d2d2d;
+    --borderColor: #2d2d2d;
+    --codeBlockBackgroundColor: #1e1e1e;
+
+    --inputBackgroundColor: #232323;
+    --inputTextColor: #fff;
+    --buttonBackgroundColor: #1e1e1e;
+    --searchButtonTextColor: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    html.is-auto-theme {
+        --textColor: #ccc;
+        --linkTextColor: #fff;
+        --headerTextColor: #fff;
+        --secondaryTextColor: #bbb;
+
+        --backgroundColor: #111;
+        --outerBackgroundColor: #000;
+        --tertiaryBackgroundColor: #1b1b1b;
+        --secondaryBackgroundColor: #1b1b1b; /** 232323 */
+        --labelBackgroundColor: #1e1e1e; /** #333 */
+        --dividerColor: #2d2d2d;
+        --borderColor: #2d2d2d;
+        --codeBlockBackgroundColor: #1e1e1e;
+
+        --inputBackgroundColor: #232323;
+        --inputTextColor: #fff;
+        --buttonBackgroundColor: #1e1e1e;
+        --searchButtonTextColor: #fff;
     }
 }
 
@@ -231,7 +282,7 @@ body > .wrapper > .content {
 /* -------------------------------------------------------------------------- */
 
 .widget .widget__title {
-    font-size: var(--h3FontSize);
+    font-size: var(--h4FontSize);
     font-weight: bold;
 }
 
@@ -327,15 +378,15 @@ body > .wrapper > .content {
 }
 
 .global-search .search__button {
-    background-color: #32373c;
+    background-color: var(--buttonBackgroundColor);
     border: none;
     cursor: pointer;
     display: inline-block;
     margin-top: calc(var(--marginDistance) / 2);
     text-align: center;
     padding: 1rem 2rem;
-    font-size: 1rem;
-    color: #fff;
+    font-size: 16px;
+    color: var(--searchButtonTextColor);
     font-weight: bold;
 }
 
@@ -347,17 +398,21 @@ body > .wrapper > .content {
     width: 100%;
     padding: 0.5rem 1rem;
     min-width: 0;
+    color: var(--inputTextColor);
+    background: var(--inputBackgroundColor);
+    outline: none;
+    border: 0;
 }
 
 .compact-search .search__button {
-    background-color: #32373c;
+    background: var(--buttonBackgroundColor);
     border: none;
     cursor: pointer;
     display: inline-block;
     text-align: center;
     padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: #fff;
+    font-size: 16px;
+    color: var(--searchButtonTextColor);
     font-weight: bold;
 }
 
@@ -383,6 +438,7 @@ body > .wrapper > .content {
     bottom: 0;
     z-index: 1;
     overflow-y: auto;
+    font-size: 16px;
     transition: transform 0.15s ease, visibility 0.15s ease;
     background: var(--outerBackgroundColor);
     color: #fff;
@@ -403,7 +459,7 @@ body:not(.has-featured-image) .global-sidebar .sidebar__header {
 }
 
 .global-sidebar .sidebar__header .sidebar__close {
-    border: 1px solid #505050;
+    border: 1px solid #2d2d2d;
     padding: 0.4rem 1.5rem;
     font-size: 0.9rem;
     border-radius: 4px;
@@ -1065,6 +1121,10 @@ body.has-featured-image .singular-header .header__wrapper {
     width: 100%;
     padding: 0.5rem 1rem;
     font-size: 1rem;
+    background-color: var(--inputBackgroundColor);
+    color: var(--inputTextColor);
+    outline: none;
+    border: 1px solid var(--borderColor);
 }
 
 .singular-article .article__comments .comments__form .comment-form-comment textarea {
@@ -1072,6 +1132,10 @@ body.has-featured-image .singular-header .header__wrapper {
     resize: vertical;
     padding: 1rem 1rem;
     font-size: 1rem;
+    background-color: var(--inputBackgroundColor);
+    color: var(--inputTextColor);
+    outline: none;
+    border: 1px solid var(--borderColor);
 }
 
 .singular-article .article__comments .comments__form .form-submit {
@@ -1080,7 +1144,7 @@ body.has-featured-image .singular-header .header__wrapper {
 }
 
 .singular-article .article__comments .comments__form .form-submit input[type="submit"] {
-    background-color: #32373c;
+    background-color: var(--buttonBackgroundColor);
     border: none;
     color: inherit;
     cursor: pointer;
@@ -1088,8 +1152,8 @@ body.has-featured-image .singular-header .header__wrapper {
     margin: 0;
     text-align: center;
     padding: 1rem 2rem;
-    font-size: 1rem;
-    color: #fff;
+    font-size: 16px;
+    color: var(--searchButtonTextColor);
     font-weight: bold;
 }
 
@@ -1537,6 +1601,7 @@ body.has-featured-image .singular-header .header__wrapper {
 
 .singular-article .article__content figcaption {
     color: var(--secondaryTextColor);
+    margin-bottom: 0;
 }
 
 /**
@@ -1672,22 +1737,76 @@ body.has-featured-image .singular-header .header__wrapper {
  *
  */
 
-.singular-article .article__content figure[class*="align"] {
-    width: 100%;
+/** alignwide */
+.singular-article .article__content .alignwide {
+    max-width: calc(var(--contentWidth) + 15vw);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.singular-article .article__content figure[class*="align"] img {
-    margin: 0 auto;
-    display: block;
+.singular-article .article__content .alignwide figcaption,
+.singular-article .article__content .alignfull figcaption {
+    max-width: var(--contentWidth);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.singular-article .article__content figure.wp-block-image > a {
+.singular-article .article__content .alignfull img {
+    max-height: 100vh;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 740px) {
+    .singular-article .article__content .alignwide figcaption,
+    .singular-article .article__content .alignfull figcaption {
+        margin-left: calc(var(--marginDistance) / 3);
+        margin-right: calc(var(--marginDistance) / 3);
+    }
+}
+
+.singular-article .article__content .alignleft,
+.singular-article .article__content .alignright {
+    max-width: calc(var(--contentWidth) / 1.5);
+}
+
+@media only screen and (max-width: 740px) {
+    .singular-article .article__content .alignleft,
+    .singular-article .article__content .alignright {
+        max-width: calc(100% - 2px); /** image border */
+    }
+}
+
+.singular-article .article__content .alignleft,
+.singular-article .article__content .alignright,
+.singular-article .article__content .alignleft figcaption,
+.singular-article .article__content .alignright figcaption {
+    margin-bottom: 0;
+}
+
+.singular-article .article__content .wp-block-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--borderColor);
+}
+
+@media only screen and (max-width: 740px) {
+    .singular-article .article__content .alignleft,
+    .singular-article .article__content .alignright {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .singular-article .article__content .alignleft img,
+    .singular-article .article__content .alignright img {
+        width: 100%;
+    }
+}
+
+.singular-article .article__content figure > a {
     text-decoration: none;
     border-bottom: none;
-}
-
-.singular-article .article__content figure.wp-block-image img {
-    border: 1px solid var(--borderColor);
 }
 
 /**
@@ -1868,9 +1987,9 @@ body.has-featured-image .singular-header .header__wrapper {
  */
 
 .singular-article .article__content pre.wp-block-code {
-    background: #f9f9f9;
+    background: var(--codeBlockBackgroundColor);
     color: var(--textColor);
-    font-size: 0.9rem;
+    font-size: min(0.9rem, 15px);
     padding: calc(var(--marginDistance) / 2);
     overflow: auto;
     box-sizing: border-box;
@@ -1889,6 +2008,10 @@ body.has-featured-image .singular-header .header__wrapper {
 .singular-article .article__content pre.wp-block-code code *,
 .singular-article .article__content pre.wp-block-code pre * {
     font-family: "Fira Code", "Noto Sans TC";
+}
+
+.singular-article .article__content pre.wp-block-code code {
+    white-space: inherit;
 }
 
 /**
